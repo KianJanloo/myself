@@ -16,5 +16,5 @@ It showcases my background, skills, selected projects, and ways to get in touch.
 - [Next.js](https://nextjs.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [shadcn/ui](https://ui.shadcn.com/)
-- [Lucide Icons](https://lucide.dev/) (optional)
-- [Vercel](https://vercel.com/) for deployment
+- [Lucide Icons](https://lucide.dev/)
+- [Vercel](https://vercel.com/)
