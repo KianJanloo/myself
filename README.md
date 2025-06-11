@@ -24,7 +24,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/myself.git
+git clone git@github.com:KianJanloo/myself.git
 
 # Navigate into the project directory
 cd myself
