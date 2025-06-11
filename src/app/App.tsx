@@ -1,6 +1,7 @@
 import { RouterProvider } from "react-router-dom"
 import { createBrowserRouter } from "react-router-dom";
 import { LandingScreen } from '../screen'
+import { HeroUIProvider } from "@heroui/react";
 
 function App() {
 
@@ -13,7 +14,9 @@ function App() {
   ])
 
   return (
-    <RouterProvider router={routes} />
+    <HeroUIProvider>
+      <RouterProvider router={routes} />
+    </HeroUIProvider>
   )
 }
 
