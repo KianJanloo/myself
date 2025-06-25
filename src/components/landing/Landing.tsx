@@ -23,9 +23,7 @@ const Landing = () => {
           <FlipText className="font-bold text-4xl tracking-tight"> Contact </FlipText>
           <Contact />
         </div>
-        <div className="w-full flex gap-4 justify-between">
-          <ResumeBox />
-        </div>
+        <ResumeBox />
       </div>
     </Container>
   )

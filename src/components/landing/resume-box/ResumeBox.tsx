@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import resumeImage from "@/assets/Resume.png"
-import resume from "/KianJanlooResume.pdf"
+import resume from "/Resume.pdf"
 
 const ResumeBox = () => {
   return (
-    <div className="bg-secondary p-8 rounded-3xl max-w-[800px] mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+    <div className="border-2 border-foreground/20 p-8 rounded-3xl max-w-[70%] max-md:max-w-full mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
       <header className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-white">Resume</h2>
         <motion.a 
@@ -20,7 +20,7 @@ const ResumeBox = () => {
           Download
         </motion.a>
       </header>
-      <div className="relative w-full h-[500px] overflow-hidden bg-transparent group">
+      <div className="relative w-full h-[500px] max-md:h-[300px] max-sm:h-[200px] overflow-hidden bg-transparent group">
         <motion.img 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
