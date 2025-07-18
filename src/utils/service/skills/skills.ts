@@ -7,6 +7,7 @@ export const skills = [
     { name: 'Tailwind', rate: 100 },
     { name: 'ShadcnUi', rate: 100 },
     { name: 'Express', rate: 80 },
+    { name: 'NestJs', rate: 80 },
     { name: 'Git', rate: 100 },
     { name: 'react-hook-form', rate: 100 },
     { name: 'Formik', rate: 100 },    
