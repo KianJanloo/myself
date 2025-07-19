@@ -7,8 +7,8 @@ interface IProject {
   title: string;
   date: string;
   link: string;
-  github: string;
-  type: string;
+  github?: string;
+  type?: string;
 }
 
 const Project: FC<IProject> = ({ date, github, link, title, type }) => {
