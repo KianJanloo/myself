@@ -1,7 +1,7 @@
 export const summary = `I am a
                 front-end developer
                 with over
-                2.5 years of experience
+                3 years of experience
                 in
                 designing and developing single-page applications (SPA)
                 using the
