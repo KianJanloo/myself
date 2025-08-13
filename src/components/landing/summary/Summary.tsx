@@ -11,7 +11,7 @@ const Summary = () => {
                     Passionate about crafting seamless digital experiences with <span className="text-accent font-bold">React</span> & <span className="text-accent font-bold">Next.js</span>.
                 </p>
                 <p className="text-gray-400 mb-4">
-                    With over 2.5 years of hands-on experience, I specialize in building modern, responsive, and user-centric web applications. My focus is on performance, accessibility, and delivering pixel-perfect interfaces that delight users and drive business results.
+                    With over 3 years of hands-on experience, I specialize in building modern, responsive, and user-centric web applications. My focus is on performance, accessibility, and delivering pixel-perfect interfaces that delight users and drive business results.
                 </p>
                 <p className="text-gray-400">
                     Always eager to learn new technologies, tackle challenging problems, and collaborate with creative teams to turn ideas into reality.
