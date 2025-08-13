@@ -1,9 +1,10 @@
-import glass from "@/assets/Glass.png"
+// import glass from "@/assets/Glass.png"
+import kian from "@/assets/Kian.jpg"
 
 const Summary = () => {
     return (
         <div id="summary" className="flex max-lg:flex-col flex-row-reverse justify-center gap-8 max-lg:gap-16 items-center">
-            <img src={glass || " "} alt=" " className='size-[300px] rounded-full bg-secondary' />
+            <img src={kian || " "} alt=" " className='size-[300px] rounded-full bg-secondary' />
             <div className='max-w-2xl'>
                 <h1 className="text-4xl font-extrabold text-accent mb-4">Hi, I'm a Front-End Developer</h1>
                 <p className="text-lg text-gray-200 font-medium mb-2">

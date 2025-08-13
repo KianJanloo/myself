@@ -24,4 +24,11 @@ export const skills = [
     { name: 'Figma', rate: 60 },    
     { name: 'Trello', rate: 100 },    
     { name: 'Jira', rate: 100 },    
+    { name: 'SPA', rate: 100 },    
+    { name: 'Styled Components', rate: 100 },    
+    { name: 'DBeaver', rate: 100 },    
+    { name: 'mongoose', rate: 90 },    
+    { name: 'typeORM', rate: 90 },    
+    { name: 'mongoDB', rate: 90 },    
+    { name: 'postgreSQL', rate: 90 },    
 ]
