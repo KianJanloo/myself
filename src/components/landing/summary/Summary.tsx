@@ -6,7 +6,7 @@ const Summary = () => {
         <div id="summary" className="flex max-lg:flex-col flex-row-reverse justify-center gap-8 max-lg:gap-16 items-center">
             <img src={kian || " "} alt=" " className='size-[300px] rounded-full bg-secondary object-cover top-4 relative' />
             <div className='max-w-2xl'>
-                <h1 className="text-4xl font-extrabold text-accent mb-4">Hi, I'm a Front-End Developer</h1>
+                <h1 className="text-4xl font-extrabold text-accent mb-4">Hi, I'm a Full-Stack Developer</h1>
                 <p className="text-lg text-gray-200 font-medium mb-2">
                     Passionate about crafting seamless digital experiences with <span className="text-accent font-bold">React</span> & <span className="text-accent font-bold">Next.js</span>.
                 </p>
