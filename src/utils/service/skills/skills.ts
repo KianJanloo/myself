@@ -30,5 +30,8 @@ export const skills = [
     { name: 'mongoose', rate: 100 },    
     { name: 'typeORM', rate: 100 },    
     { name: 'mongoDB', rate: 100 },    
-    { name: 'postgreSQL', rate: 100 },    
+    { name: 'postgreSQL', rate: 100 },  
+    { name: 'Material UI', rate: 100 },  
+    { name: 'i18n', rate: 100 },  
+    { name: 'WebSocket', rate: 100 },  
 ]
