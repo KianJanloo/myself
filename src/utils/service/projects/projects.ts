@@ -12,6 +12,12 @@ export const projects = [
         type: "NextJs",
     },
     {
+        title: "Burger Cafe",
+        date: "09/2025",
+        link: "https://burger-cafee.netlify.app",
+        type: "NextJs",
+    },
+    {
         title: "Game Store ( Back End )",
         date: "05/2025",
         link: "https://game-store-kappa-woad.vercel.app/",
