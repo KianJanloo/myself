@@ -18,6 +18,12 @@ export const projects = [
         type: "NextJs",
     },
     {
+        title: "Todo List",
+        date: "09/2025",
+        link: "https://todo-kian.netlify.app/",
+        type: "NextJs",
+    },
+    {
         title: "Game Store ( Back End )",
         date: "05/2025",
         link: "https://game-store-kappa-woad.vercel.app/",
