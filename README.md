@@ -123,15 +123,6 @@ The portfolio is fully customizable with easy-to-modify data files for projects,
 
 ## 🔧 Configuration
 
-### Environment Variables
-Create a `.env` file in the root directory for any environment-specific configurations:
-
-```env
-VITE_EMAILJS_SERVICE_ID=your_service_id
-VITE_EMAILJS_TEMPLATE_ID=your_template_id
-VITE_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
 ### Email Configuration
 The contact form uses EmailJS. Configure your email service in the EmailJS dashboard and update the environment variables.
 
