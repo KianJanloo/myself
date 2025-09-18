@@ -1,20 +1,39 @@
 import React from 'react'
 import type { IContactCard } from '../../../types/contact-card-type/contact-card-type'
-import { BlurFade } from '@/components/ui/blur-fade'
+import { motion } from 'framer-motion'
 
 const ContactCard: React.FC<IContactCard> = ({ icon, title, value, link }) => {
   return (
-    <BlurFade initial={{ opacity: 0, y: -100 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
-      <a href={link} className='flex flex-col items-center p-6 rounded-xl shadow-lg bg-gray-800 hover:bg-gray-700 transition-all duration-300 group'>
-        <span className='text-3xl text-accent mb-3'>{icon}</span>
-        <div className='font-semibold text-lg text-white mb-2'>{title}</div>
-        <span
-          className='text-gray-300 hover:text-white transition-colors duration-200 text-center'
-        >
-          {value}
-        </span>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <a 
+        href={link} 
+        target="_blank"
+        rel="noopener noreferrer"
+        className='block h-full'
+      >
+        <div className='glass rounded-2xl p-8 h-full flex flex-col items-center text-center hover:shadow-xl hover:shadow-accent/10 transition-all duration-500 group-hover:scale-105 group-hover:border-accent/50 border border-white/10'>
+          <div className='text-5xl text-accent mb-4 group-hover:text-accent-secondary transition-colors duration-300 group-hover:scale-110'>
+            {icon}
+          </div>
+          <h3 className='font-bold text-xl text-text-primary mb-3 group-hover:gradient-text transition-all duration-300'>
+            {title}
+          </h3>
+          <p className='text-text-muted group-hover:text-text-primary transition-colors duration-300 text-sm leading-relaxed'>
+            {value}
+          </p>
+          
+          <div className="mt-6 w-full">
+            <div className="h-1 bg-gradient-to-r from-accent to-accent-secondary rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          </div>
+        </div>
       </a>
-    </BlurFade>
+    </motion.div>
   )
 }
 

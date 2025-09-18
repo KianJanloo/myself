@@ -1,5 +1,5 @@
 export interface IContactCard {
-  icon: React.ReactNode; // or string if using icon names
+  icon: React.ReactNode;
   title: string;
   value?: string;
   link?: string;
