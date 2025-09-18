@@ -17,7 +17,7 @@ const LazyImage = ({ src, alt, className = '', placeholder, ...props }: LazyImag
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry?.isIntersecting) {
           setIsInView(true)
           observer.disconnect()
         }
