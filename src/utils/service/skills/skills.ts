@@ -1,10 +1,14 @@
 export const skills = [
-    // Frontend
-    { name: 'HTML', rate: 100, category: 'frontend' },
-    { name: 'CSS', rate: 100, category: 'frontend' },
+    // Programming Languages
     { name: 'JavaScript', rate: 100, category: 'languages' },
     { name: 'TypeScript', rate: 100, category: 'languages' },
+    
+    // Frontend Technologies
+    { name: 'HTML', rate: 100, category: 'frontend' },
+    { name: 'CSS', rate: 100, category: 'frontend' },
     { name: 'React', rate: 100, category: 'frontend' },
+    { name: 'Context API', rate: 100, category: 'frontend' },
+    { name: 'Redux', rate: 100, category: 'frontend' },
     { name: 'NextJs', rate: 100, category: 'frontend' },
     { name: 'Tailwind', rate: 100, category: 'frontend' },
     { name: 'ShadcnUi', rate: 100, category: 'frontend' },
@@ -20,7 +24,7 @@ export const skills = [
     { name: 'axios', rate: 100, category: 'frontend' },
     { name: 'i18n', rate: 85, category: 'frontend' },
     
-    // Backend
+    // Backend Technologies
     { name: 'Express', rate: 100, category: 'backend' },
     { name: 'NestJs', rate: 100, category: 'backend' },
     { name: 'NextAuth', rate: 100, category: 'backend' },
@@ -32,7 +36,7 @@ export const skills = [
     { name: 'postgreSQL', rate: 100, category: 'backend' },
     { name: 'WebSocket', rate: 80, category: 'backend' },
     
-    // Tools
+    // Development Tools
     { name: 'Git', rate: 100, category: 'tools' },
     { name: 'Git Hub', rate: 100, category: 'tools' },
     { name: 'Postman', rate: 100, category: 'tools' },
