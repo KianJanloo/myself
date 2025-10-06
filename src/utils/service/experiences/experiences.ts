@@ -2,7 +2,7 @@ export const experiences = [
   {
     company: "Sahar SMS",
     role: "Full-Stack Developer",
-    period: "07/2024 - 09/2025",
+    period: "07/2024 - 10/2025",
     location: "Tehran",
     bullets: [
       "Built REST APIs with Express and TypeScript: routing, controllers, middleware, validation, authentication (JWT or OAuth2), RBAC, and rate limiting.",
