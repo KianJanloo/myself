@@ -15,9 +15,20 @@ interface IProject {
   description?: string;
   technologies?: string[];
   image?: string;
+  company?: string;
 }
 
-const Project: FC<IProject> = ({ date, github, link, title, type, description, technologies, image }) => {
+const Project: FC<IProject> = ({
+  date,
+  github,
+  link,
+  title,
+  type,
+  description,
+  technologies,
+  image,
+  company,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -36,18 +47,23 @@ const Project: FC<IProject> = ({ date, github, link, title, type, description, t
           <BlurFade inView className="h-full flex flex-col p-6">
             <div className="flex-1">
               <div className="flex items-start justify-between mb-4">
-                <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
-                  {title}
-                </h3>
+                <div>
+                  <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
+                    {title}
+                  </h3>
+                  {company && (
+                    <p className="text-sm text-text-muted mt-1">{company}</p>
+                  )}
+                </div>
                 <span className="text-sm text-accent bg-accent/10 px-3 py-1 rounded-full font-medium">
                   {date}
                 </span>
               </div>
 
               <div className="space-y-3 mb-6">
-                <a 
-                  href={link} 
-                  target="_blank" 
+                <a
+                  href={link}
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-accent hover:text-accent-secondary transition-colors duration-300 font-medium group/link"
                 >
@@ -56,9 +72,9 @@ const Project: FC<IProject> = ({ date, github, link, title, type, description, t
                 </a>
 
                 {github && (
-                  <a 
-                    href={github} 
-                    target="_blank" 
+                  <a
+                    href={github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 text-text-muted hover:text-accent transition-colors duration-300"
                   >
@@ -87,8 +103,14 @@ const Project: FC<IProject> = ({ date, github, link, title, type, description, t
                 </button>
                 <div className="flex gap-2">
                   <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
-                  <div className="w-2 h-2 bg-accent-secondary rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                  <div
+                    className="w-2 h-2 bg-accent-secondary rounded-full animate-pulse"
+                    style={{ animationDelay: "0.2s" }}
+                  ></div>
+                  <div
+                    className="w-2 h-2 bg-accent rounded-full animate-pulse"
+                    style={{ animationDelay: "0.4s" }}
+                  ></div>
                 </div>
               </div>
             </div>
@@ -97,7 +119,17 @@ const Project: FC<IProject> = ({ date, github, link, title, type, description, t
       </motion.div>
 
       <ProjectModal
-        project={{ title, date, link, github, type, description, technologies, image }}
+        project={{
+          title,
+          date,
+          link,
+          github,
+          type,
+          description,
+          technologies,
+          image,
+          company,
+        }}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />

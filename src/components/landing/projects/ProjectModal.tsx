@@ -1,23 +1,34 @@
-import { motion, AnimatePresence } from 'framer-motion'
-import { FaTimes, FaExternalLinkAlt, FaGithub, FaCalendarAlt, FaTag } from 'react-icons/fa'
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  FaTimes,
+  FaExternalLinkAlt,
+  FaGithub,
+  FaCalendarAlt,
+  FaTag,
+} from "react-icons/fa";
 
 interface ProjectModalProps {
   project: {
-    title: string
-    date: string
-    link: string
-    github?: string
-    type?: string
-    description?: string
-    technologies?: string[]
-    image?: string
-  } | null
-  isOpen: boolean
-  onClose: () => void
+    title: string;
+    date: string;
+    link: string;
+    github?: string;
+    type?: string;
+    description?: string;
+    technologies?: string[];
+    image?: string;
+    company?: string;
+  } | null;
+  isOpen: boolean;
+  onClose: () => void;
 }
 
-const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
-  if (!project) return null
+const ProjectModal = ({
+  project,
+  isOpen,
+  onClose,
+}: ProjectModalProps) => {
+  if (!project) return null;
 
   return (
     <AnimatePresence>
@@ -42,6 +53,9 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   <h2 className="text-3xl font-bold text-text-primary mb-2 gradient-text">
                     {project.title}
                   </h2>
+                  {project.company && (
+                    <p className="text-sm text-text-muted mt-1">{project.company}</p>
+                  )}
                   <div className="flex items-center gap-4 text-text-muted">
                     <div className="flex items-center gap-2">
                       <FaCalendarAlt className="w-4 h-4" />
@@ -75,14 +89,20 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
               {project.description && (
                 <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-text-primary mb-3">Description</h3>
-                  <p className="text-text-muted leading-relaxed">{project.description}</p>
+                  <h3 className="text-xl font-semibold text-text-primary mb-3">
+                    Description
+                  </h3>
+                  <p className="text-text-muted leading-relaxed">
+                    {project.description}
+                  </p>
                 </div>
               )}
 
               {project.technologies && (
                 <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-text-primary mb-3">Technologies Used</h3>
+                  <h3 className="text-xl font-semibold text-text-primary mb-3">
+                    Technologies Used
+                  </h3>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
                       <span
@@ -123,7 +143,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
         </motion.div>
       )}
     </AnimatePresence>
-  )
-}
+  );
+};
 
-export default ProjectModal
+export default ProjectModal;

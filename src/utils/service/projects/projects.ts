@@ -5,6 +5,15 @@ export const projects = [
         link: "https://myself-wheat.vercel.app/",
         github: "https://github.com/KianJanloo/myself",
         type: "React",
+        company: "Kian Janloo",
+    },
+    {
+        title: "Bama Real State",
+        date: "10/2025",
+        link: "https://amlakbama98.ir",
+        github: "https://github.com/KianJanloo/bama-front-end",
+        type: "NextJs",
+        company: "Bama Real State",
     },
     {
         title: "Delta Real Estate Web Site",
@@ -12,6 +21,7 @@ export const projects = [
         link: "https://delta-realestate.vercel.app/fa",
         github: "https://github.com/KianJanloo/Delta",
         type: "NextJs",
+        company: "Apanco",
     },
     {
         title: "Burger Cafe",
@@ -19,6 +29,7 @@ export const projects = [
         link: "https://burger-cafee.netlify.app",
         github: "https://github.com/KianJanloo/burger-cafe",
         type: "React",
+        company: "Sepehr Academy",
     },
     {
         title: "Todo List",
@@ -26,6 +37,7 @@ export const projects = [
         link: "https://todo-kian.netlify.app/",
         github: "https://github.com/KianJanloo/todo",
         type: "NextJs",
+        company: "Kian Janloo",
     },
     {
         title: "Time Craft",
@@ -33,6 +45,7 @@ export const projects = [
         link: "https://time-craft-kian.netlify.app/",
         github: "https://github.com/KianJanloo/time-craft",
         type: "NextJs",
+        company: "Sahar SMS",
     },
     {
         title: "Game Store ( Back End )",
@@ -40,6 +53,7 @@ export const projects = [
         link: "https://game-store-kappa-woad.vercel.app/",
         github: "https://github.com/KianJanloo/Game-Store",
         type: "Express",
+        company: "Kian Janloo",
     },
     {
         title: "Book City ( Back End )",
@@ -47,5 +61,14 @@ export const projects = [
         link: "https://book-city-production.up.railway.app/",
         github: "https://github.com/KianJanloo/Book-City",
         type: "NestJs",
+        company: "Kian Janloo",
+    },
+    {
+        title: "Bama Real State ( Back End )",
+        date: "10/2025",
+        link: "https://bama98.liara.run/",
+        github: "https://github.com/KianJanloo/bama-backend",
+        type: "NestJs",
+        company: "Bama Real State",
     },
 ]
