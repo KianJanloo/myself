@@ -9,7 +9,7 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
   const [activeFilter, setActiveFilter] = useState('all')
   const categories = [
     { key: 'all', label: 'All', icon: '🌟' },
-    { key: 'languages', label: 'Languages', icon: '💻' },
+    { key: 'languages', label: 'Languages', icon: '💎' },
     { key: 'frontend', label: 'Frontend', icon: '🎨' },
     { key: 'backend', label: 'Backend', icon: '⚙️' },
     { key: 'tools', label: 'Tools', icon: '🛠️' },

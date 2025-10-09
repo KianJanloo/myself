@@ -53,7 +53,7 @@ const Summary = () => {
                 </p>
 
                 <p className="text-lg text-text-muted leading-relaxed">
-                  With 3+ years of experience, I focus on performance,
+                  With 4+ years of experience, I focus on performance,
                   accessibility, and pixel-perfect design to deliver products
                   that delight users and drive business growth.
                 </p>

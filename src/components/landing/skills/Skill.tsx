@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 
 const getCategoryIcon = (category: string) => {
   const icons = {
-    languages: '💻',
+    languages: '💎',
     frontend: '🎨',
     backend: '⚙️',
     tools: '🛠️'
