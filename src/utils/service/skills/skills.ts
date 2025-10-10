@@ -23,6 +23,7 @@ export const skills = [
   { name: "PostgreSQL", rate: 100, category: "backend" },
   { name: "Sequelize", rate: 100, category: "backend" },
   { name: "REST API", rate: 100, category: "backend" },
+  { name: "GraphQL", rate: 100, category: "backend" },
 
   // Development Tools
   { name: "Git", rate: 100, category: "tools" },
