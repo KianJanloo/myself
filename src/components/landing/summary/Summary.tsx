@@ -16,7 +16,7 @@ const Summary = () => {
               <div className="relative">
                 <img
                   src={kian || " "}
-                  alt="Kian Janloo - Full Stack Developer"
+                  alt="Kian Janloo - Front End Developer"
                   className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -34,7 +34,7 @@ const Summary = () => {
                 <h1 className="text-5xl lg:text-6xl font-bold mb-4">
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
-                  <span className="text-white">Full-Stack Developer</span>
+                  <span className="text-white">Front-End Developer</span>
                 </h1>
               </motion.div>
 
@@ -45,7 +45,7 @@ const Summary = () => {
                 className="space-y-4"
               >
                 <p className="text-xl text-text-primary font-medium leading-relaxed">
-                  A Full-Stack Developer passionate about building modern,
+                  A Front-End Developer passionate about building modern,
                   responsive, and user-centric web apps with{" "}
                   <span className="gradient-text font-bold">React</span> ,{" "}
                   <span className="gradient-text font-bold">Next.js</span> and{" "}

@@ -33,7 +33,7 @@ const ResumeBox = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
       <div className="mt-4 text-gray-300 text-sm">
-        <p>Front-End Developer with over 3 years of experience in building modern web applications using React and Next.js. Passionate about creating seamless user experiences and delivering high-performance solutions.</p>
+        <p>Front-End Developer with over 4 years of experience in building modern web applications using React and Next.js. Passionate about creating seamless user experiences and delivering high-performance solutions.</p>
       </div>
     </div>
   );
