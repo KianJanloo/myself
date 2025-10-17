@@ -16,7 +16,7 @@ const Summary = () => {
               <div className="relative">
                 <img
                   src={kian || " "}
-                  alt="Kian Janloo - Front End Developer"
+                  alt="Kian Janloo - Full Stack Developer"
                   className="w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
