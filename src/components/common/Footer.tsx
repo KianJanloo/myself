@@ -46,7 +46,7 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold gradient-text">Kian Janloo</h3>
             <p className="text-text-muted leading-relaxed">
-              Full Stack Developer passionate about creating exceptional digital experiences 
+              Front End Developer passionate about creating exceptional digital experiences 
               with modern technologies and clean code.
             </p>
             <div className="flex space-x-4">

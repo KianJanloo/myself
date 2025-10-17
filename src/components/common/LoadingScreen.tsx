@@ -37,7 +37,7 @@ const LoadingScreen = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 1 }}
             >
-              Full Stack Developer
+              Front End Developer
             </motion.p>
             <motion.div
               className="mt-8 flex justify-center space-x-2"

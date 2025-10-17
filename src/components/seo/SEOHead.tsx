@@ -10,9 +10,9 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({
-  title = "Kian Janloo - Full Stack Developer",
-  description = "Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable and performant web applications.",
-  keywords = "Full Stack Developer, React, Next.js, TypeScript, JavaScript, Web Development, Frontend, Backend, Portfolio",
+  title = "Kian Janloo - Front End Developer",
+  description = "Front End Developer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable and performant web applications.",
+  keywords = "Front End Developer, React, Next.js, TypeScript, JavaScript, Web Development, Frontend, Backend, Portfolio",
   image = "/og-image.jpg",
   url = "https://kianjanloo.dev",
   type = "website"
@@ -48,7 +48,7 @@ const SEOHead = ({
           "@context": "https://schema.org",
           "@type": "Person",
           "name": "Kian Janloo",
-          "jobTitle": "Full Stack Developer",
+          "jobTitle": "Front End Developer",
           "description": description,
           "url": url,
           "image": image,
