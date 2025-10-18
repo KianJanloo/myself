@@ -8,7 +8,7 @@ const Summary = () => {
       id="summary"
       className="min-h-screen flex items-center justify-center py-20"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center">
         <div className="flex max-lg:flex-col flex-row-reverse justify-center gap-12 max-lg:gap-16 items-center max-w-6xl mx-auto">
           <BlurFade inView delay={0.2} direction="left">
             <div className="relative group">
@@ -31,10 +31,10 @@ const Summary = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
               >
-                <h1 className="text-5xl lg:text-6xl font-bold mb-4">
+                <h1 className="text-5xl lg:text-6xl max-md:text-4xl font-bold mb-4">
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
-                  <span className="text-white">Front-End Developer</span>
+                  <span className="text-white whitespace-nowrap">Front-End Developer</span>
                 </h1>
               </motion.div>
 
@@ -52,7 +52,7 @@ const Summary = () => {
                   <span className="gradient-text font-bold">Node.js</span>.
                 </p>
 
-                <p className="text-lg text-text-muted leading-relaxed">
+                <p className="text-lg text-text-muted  leading-relaxed">
                   With 4+ years of experience, I focus on performance,
                   accessibility, and pixel-perfect design to deliver products
                   that delight users and drive business growth.
@@ -69,7 +69,7 @@ const Summary = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.7 }}
-                className="flex flex-wrap gap-4 pt-6"
+                className="flex max-md:justify-center whitespace-nowrap flex-wrap gap-4 pt-6"
               >
                 <a
                   href="#projects"

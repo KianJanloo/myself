@@ -1,6 +1,6 @@
 export const skills = [
   // Programming Languages
-  { name: "JavaScript", rate: 100, category: "languages" },
+  { name: "JavaScript (ES6+)", rate: 100, category: "languages" },
   { name: "TypeScript", rate: 100, category: "languages" },
 
   // Frontend Technologies
@@ -24,11 +24,7 @@ export const skills = [
   { name: "Sequelize", rate: 100, category: "backend" },
   { name: "REST API", rate: 100, category: "backend" },
   { name: "GraphQL", rate: 100, category: "backend" },
-
-  // Development Tools
-  { name: "Git", rate: 100, category: "tools" },
-  { name: "Git Hub", rate: 100, category: "tools" },
-  { name: "Postman", rate: 100, category: "tools" },
-  { name: "Figma", rate: 100, category: "tools" },
-  { name: "pgAdmin 4", rate: 100, category: "tools" },
+  { name: "Swagger", rate: 100, category: "backend" },
+  { name: "AWS (S3)", rate: 100, category: "backend" },
+  { name: "Jest", rate: 100, category: "backend" },
 ];

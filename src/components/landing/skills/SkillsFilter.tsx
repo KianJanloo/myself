@@ -12,7 +12,6 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
     { key: 'languages', label: 'Languages', icon: '💎' },
     { key: 'frontend', label: 'Frontend', icon: '🎨' },
     { key: 'backend', label: 'Backend', icon: '⚙️' },
-    { key: 'tools', label: 'Tools', icon: '🛠️' },
   ]
 
   const handleFilter = (filter: string) => {

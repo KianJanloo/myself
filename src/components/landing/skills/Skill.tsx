@@ -7,7 +7,6 @@ const getCategoryIcon = (category: string) => {
     languages: '💎',
     frontend: '🎨',
     backend: '⚙️',
-    tools: '🛠️'
   }
   return icons[category as keyof typeof icons] || '💡'
 }
@@ -17,12 +16,11 @@ const getCategoryColor = (category: string) => {
     languages: 'from-purple-500 to-pink-600',
     frontend: 'from-blue-500 to-purple-600',
     backend: 'from-green-500 to-teal-600',
-    tools: 'from-orange-500 to-red-600'
   }
   return colors[category as keyof typeof colors] || 'from-gray-500 to-gray-600'
 }
 
-const Skill: React.FC<ISkill> = ({ name, idx, category = 'tools' }) => {
+const Skill: React.FC<ISkill> = ({ name, idx, category = 'frontend' }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.9 }}

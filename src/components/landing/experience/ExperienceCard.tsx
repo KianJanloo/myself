@@ -26,11 +26,11 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, role, period, 
       >
         <BlurFade inView className="h-full flex flex-col p-6">
           <div className="flex-1">
-            <div className="flex items-start justify-between mb-4">
+            <div className="flex max-md:flex-col gap-4 items-start justify-between mb-4">
               <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
                 {role}
               </h3>
-              <span className="text-sm text-accent bg-accent/10 px-3 py-1 rounded-full font-medium flex items-center gap-1">
+              <span className="text-sm text-accent bg-accent/10 whitespace-nowrap px-3 py-1 rounded-full font-medium flex items-center gap-1">
                 <FaCalendarAlt className="w-3 h-3" />
                 {period}
               </span>
