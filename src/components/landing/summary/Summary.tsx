@@ -34,7 +34,7 @@ const Summary = () => {
                 <h1 className="text-5xl lg:text-6xl max-md:text-4xl font-bold mb-4">
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
-                  <span className="text-white whitespace-nowrap">Front-End Developer</span>
+                  <span className="text-white whitespace-nowrap">Full-Stack Developer</span>
                 </h1>
               </motion.div>
 
@@ -45,7 +45,7 @@ const Summary = () => {
                 className="space-y-4"
               >
                 <p className="text-xl text-text-primary font-medium leading-relaxed">
-                  A Front-End Developer passionate about building modern,
+                  A Full-Stack Developer passionate about building modern,
                   responsive, and user-centric web apps with{" "}
                   <span className="gradient-text font-bold">React</span> ,{" "}
                   <span className="gradient-text font-bold">Next.js</span> and{" "}
