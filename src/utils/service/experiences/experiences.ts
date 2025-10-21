@@ -2,7 +2,7 @@ export const experiences = [
   {
     company: "Sahar SMS",
     role: "Full-Stack Developer",
-    period: "07/2024 - 10/2025",
+    period: "07/2025 - 10/2025",
     location: "Tehran",
     bullets: [
       "Built and maintained scalable REST APIs with Express.js and TypeScript, implementing routing, middleware, JWT authentication, RBAC, and rate limiting for secure and efficient operations.",
@@ -19,7 +19,7 @@ export const experiences = [
   {
     company: "Apanco",
     role: "Front-End Developer",
-    period: "03/2024 - 07/2025",
+    period: "09/2023 - 03/2025",
     location: "Sari, Mazandaran",
     bullets: [
       "Converted UX/UI wireframes into production-ready React, TypeScript, and Next.js applications, reducing post-launch issues by 15%.",
@@ -34,7 +34,7 @@ export const experiences = [
   {
     company: "Sepehr Academy",
     role: "Front-End Developer",
-    period: "04/2022 - 03/2024",
+    period: "03/2022 - 09/2023",
     location: "Sari, Mazandaran",
     bullets: [
       "Collaborated within a 3-member Agile team to build scalable, responsive React applications with modular, reusable components — improving development efficiency by 25%.",
