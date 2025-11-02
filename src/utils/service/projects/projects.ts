@@ -1,13 +1,5 @@
 export const projects = [
     {
-        title: "Personal Web Site",
-        date: "06/2025",
-        link: "https://myself-wheat.vercel.app/",
-        github: "https://github.com/KianJanloo/myself",
-        type: "React",
-        company: "Kian Janloo",
-    },
-    {
         title: "Bama Real State",
         date: "10/2025",
         link: "https://amlakbama98.ir",
