@@ -2,7 +2,7 @@ export const projects = [
     {
         title: "Bama Real State",
         date: "10/2025",
-        link: "https://amlakbama98.ir",
+        link: "https://bama-front-end.vercel.app/",
         github: "https://github.com/KianJanloo/bama-front-end",
         type: "NextJs",
         company: "Bama Real State",
