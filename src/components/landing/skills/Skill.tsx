@@ -1,12 +1,13 @@
 import React from 'react'
 import type { ISkill } from '../../../types/skill-type/skill-type'
 import { motion } from 'framer-motion'
+import { FaLanguage, FaLaptopCode, FaPaintBrush } from 'react-icons/fa'
 
 const getCategoryIcon = (category: string) => {
   const icons = {
-    languages: '💎',
-    frontend: '🎨',
-    backend: '⚙️',
+    languages: <FaLanguage />,
+    frontend: <FaPaintBrush />,
+    backend: <FaLaptopCode />,
   }
   return icons[category as keyof typeof icons] || '💡'
 }
