@@ -73,7 +73,10 @@ const ContactForm = () => {
         setSubmitStatus('error')
       }
     } catch (error) {
-      console.error('Email sending error:', error)
+      // Only log errors in development mode
+      if (import.meta.env.DEV) {
+        console.error('Email sending error:', error)
+      }
       setSubmitStatus('error')
     } finally {
       setIsSubmitting(false)

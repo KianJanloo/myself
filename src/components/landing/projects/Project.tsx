@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo, useCallback } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { MagicCard } from "@/components/ui/magic-card";
 import ProjectModal from "./ProjectModal";
@@ -18,7 +18,7 @@ interface IProject {
   company?: string;
 }
 
-const Project: FC<IProject> = ({
+const Project: FC<IProject> = memo(({
   date,
   github,
   link,
@@ -30,6 +30,14 @@ const Project: FC<IProject> = ({
   company,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  
+  const handleOpenModal = useCallback(() => {
+    setIsModalOpen(true);
+  }, []);
+  
+  const handleCloseModal = useCallback(() => {
+    setIsModalOpen(false);
+  }, []);
 
   return (
     <>
@@ -95,8 +103,9 @@ const Project: FC<IProject> = ({
             <div className="pt-4 border-t border-white/10">
               <div className="flex items-center justify-between">
                 <button
-                  onClick={() => setIsModalOpen(true)}
+                  onClick={handleOpenModal}
                   className="flex items-center gap-2 text-accent hover:text-accent-secondary transition-colors duration-300 text-sm font-medium"
+                  aria-label={`View details for ${title}`}
                 >
                   <FaEye className="w-4 h-4" />
                   <span>View Details</span>
@@ -131,10 +140,12 @@ const Project: FC<IProject> = ({
           company,
         }}
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={handleCloseModal}
       />
     </>
   );
-};
+});
+
+Project.displayName = 'Project';
 
 export default Project;

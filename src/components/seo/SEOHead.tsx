@@ -14,7 +14,7 @@ const SEOHead = ({
   description = "Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable and performant web applications.",
   keywords = "Full Stack Developer, React, Next.js, TypeScript, JavaScript, Web Development, Frontend, Backend, Portfolio",
   image = "/og-image.jpg",
-  url = "https://kianjanloo.dev",
+  url = import.meta.env.VITE_SITE_URL || "https://myself-wheat.vercel.app",
   type = "website"
 }: SEOHeadProps) => {
   return (

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { MagicCard } from "@/components/ui/magic-card"
 import { motion } from "framer-motion";
@@ -11,7 +12,7 @@ interface ExperienceCardProps {
   bullets: string[];
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, role, period, location, bullets }) => {
+const ExperienceCard: React.FC<ExperienceCardProps> = memo(({ company, role, period, location, bullets }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -76,6 +77,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({ company, role, period, 
       </MagicCard>
     </motion.div>
   )
-}
+})
+
+ExperienceCard.displayName = 'ExperienceCard'
 
 export default ExperienceCard
