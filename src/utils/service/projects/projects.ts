@@ -16,6 +16,13 @@ export const projects = [
         company: "Apanco",
     },
     {
+        title: "Call Of Duty",
+        date: "11/2025",
+        github: "https://github.com/KianJanloo/call-of-duty",
+        type: "TypeScript",
+        company: "Kian Janloo",
+    },
+    {
         title: "Burger Cafe",
         date: "08/2025",
         link: "https://burger-cafee.netlify.app",
