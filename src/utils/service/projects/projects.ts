@@ -18,6 +18,7 @@ export const projects = [
     {
         title: "Call Of Duty",
         date: "11/2025",
+        link: "https://call-of-duty-gamma.vercel.app",
         github: "https://github.com/KianJanloo/call-of-duty",
         type: "TypeScript",
         company: "Kian Janloo",
