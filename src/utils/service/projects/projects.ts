@@ -71,4 +71,11 @@ export const projects = [
         type: "NestJs",
         company: "Bama Real State",
     },
+    {
+        title: "Bag API ( Back End )",
+        date: "11/2025",
+        github: "https://github.com/KianJanloo/BagApi",
+        type: "ASP.NET",
+        company: "Kian Janloo",
+    }
 ]
