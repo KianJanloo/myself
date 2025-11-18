@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 interface IProject {
   title: string;
   date: string;
-  link: string;
+  link?: string;
   github?: string;
   type?: string;
   description?: string;

@@ -11,7 +11,7 @@ interface ProjectModalProps {
   project: {
     title: string;
     date: string;
-    link: string;
+    link?: string;
     github?: string;
     type?: string;
     description?: string;
@@ -23,11 +23,7 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const ProjectModal = ({
-  project,
-  isOpen,
-  onClose,
-}: ProjectModalProps) => {
+const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   if (!project) return null;
 
   return (
@@ -54,7 +50,9 @@ const ProjectModal = ({
                     {project.title}
                   </h2>
                   {project.company && (
-                    <p className="text-sm text-text-muted mt-1">{project.company}</p>
+                    <p className="text-sm text-text-muted mt-1">
+                      {project.company}
+                    </p>
                   )}
                   <div className="flex items-center gap-4 text-text-muted">
                     <div className="flex items-center gap-2">
@@ -117,15 +115,17 @@ const ProjectModal = ({
               )}
 
               <div className="flex flex-wrap gap-4">
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-secondary text-white rounded-full hover:shadow-lg transition-all duration-300"
-                >
-                  <FaExternalLinkAlt className="w-4 h-4" />
-                  <span>View Project</span>
-                </a>
+                {project.link && (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-secondary text-white rounded-full hover:shadow-lg transition-all duration-300"
+                  >
+                    <FaExternalLinkAlt className="w-4 h-4" />
+                    <span>View Project</span>
+                  </a>
+                )}
                 {project.github && (
                   <a
                     href={project.github}
