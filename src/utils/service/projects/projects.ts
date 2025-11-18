@@ -2,7 +2,7 @@ export const projects = [
     {
         title: "Bama Real State",
         date: "10/2025",
-        link: "https://amlakbama98.ir",
+        link: "https://bama-front-end.vercel.app/",
         github: "https://github.com/KianJanloo/bama-front-end",
         type: "NextJs",
         company: "Bama Real State",
@@ -21,7 +21,7 @@ export const projects = [
         link: "https://call-of-duty-gamma.vercel.app",
         github: "https://github.com/KianJanloo/call-of-duty",
         type: "TypeScript",
-        company: "Kian Janloo",
+        company: "Sepehr Academy",
     },
     {
         title: "Burger Cafe",
