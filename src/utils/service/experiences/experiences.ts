@@ -3,7 +3,7 @@ export const experiences = [
     company: "Sahar SMS",
     role: "Full-Stack Developer",
     period: "07/2025 - 10/2025",
-    location: "Tehran",
+    location: "Tehran (Remote)",
     bullets: [
       "Built and maintained scalable REST APIs with Express.js and TypeScript, implementing routing, middleware, JWT authentication, RBAC, and rate limiting for secure and efficient operations.",
       "Designed optimized PostgreSQL data models with TypeORM, managing migrations, relations, and high-performance queries; administered databases through pgAdmin.",
@@ -14,6 +14,23 @@ export const experiences = [
       "Integrated and tested APIs using Postman, while managing API documentation and debugging workflows.",
       "Enhanced observability with Swagger (API docs), Winston (logging), Sentry (error tracking), and basic metrics/tracing for reliability and performance insights.",
       "Stored and served static assets via AWS S3 buckets, contributing to scalable deployments and optimized cloud storage management.",
+    ],
+  },
+  {
+    company: "Hexorix",
+    role: "Back-End Developer",
+    period: "03/2025 - 06/2025",
+    location: "Remote",
+    bullets: [
+      "Developed scalable and modular backend services using Express.js and NestJS with TypeScript, implementing clean architecture and reusable modules for long-term maintainability.",
+      "Designed and optimized relational and non-relational databases using PostgreSQL, MongoDB, TypeORM, and Mongoose — improving query performance and data consistency.",
+      "Built secure RESTful APIs and GraphQL endpoints with JWT authentication, role-based access control (RBAC), and request validation for reliable and safe data access.",
+      "Integrated caching layers and optimized performance using Redis for sessions, rate limiting, and high-throughput workloads.",
+      "Implemented automated testing with Jest, increasing backend reliability and reducing regression bugs across critical endpoints.",
+      "Created comprehensive API documentation using Swagger and improved developer experience with clear contracts and testing workflows via Postman.",
+      "Developed background workers and cron jobs for heavy tasks such as data processing, queue management, and scheduled operations.",
+      "Containerized services with Docker and participated in CI/CD setup to streamline deployments and improve release consistency.",
+      "Integrated AWS S3 for secure storage of media and static assets, contributing to scalable cloud-based infrastructure.",
     ],
   },
   {
