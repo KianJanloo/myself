@@ -4,7 +4,7 @@ A modern, responsive portfolio website showcasing my skills, experience, and pro
 
 ## 🌐 Live Demo
 
-**Deployment:** [https://myself-wheat.vercel.app/](https://myself-wheat.vercel.app/)
+**Deployment:** [https://kian-janloo.vercel.app/](https://kian-janloo.vercel.app/)
 
 ## 🚀 Features
 
@@ -135,7 +135,7 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 
 # Site Configuration
-VITE_SITE_URL=https://myself-wheat.vercel.app
+VITE_SITE_URL=https://kian-janloo.vercel.app/
 ```
 
 ### Email Configuration
@@ -168,9 +168,9 @@ The project can be deployed to any static hosting service:
 ## 📞 Contact
 
 **Kian Janloo**
-- Portfolio: [https://myself-wheat.vercel.app/](https://myself-wheat.vercel.app/)
+- Portfolio: [https://kian-janloo.vercel.app/](https://kian-janloo.vercel.app/)
 - GitHub: [@KianJanloo](https://github.com/KianJanloo)
-- Email: [Contact through portfolio](https://myself-wheat.vercel.app/#contact)
+- Email: [Contact through portfolio](https://kian-janloo.vercel.app/#contact)
 
 ---
 
