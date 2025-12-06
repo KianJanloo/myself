@@ -4,7 +4,7 @@ import resume from "/Resume.pdf"
 
 const ResumeBox = () => {
   return (
-    <div className="border-2 border-foreground/20 p-8 rounded-3xl max-w-[70%] max-md:max-w-full mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+    <div className="border-2 border-foreground/20 p-8 rounded-3xl max-w-5xl max-md:max-w-full mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
       <header className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-white">Resume</h2>
         <motion.a 

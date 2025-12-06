@@ -103,7 +103,7 @@ const ContactForm = () => {
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="max-w-2xl mx-auto"
+      className="max-w-5xl mx-auto"
     >
       <div className="glass rounded-2xl p-8 border border-white/20">
         <h3 className="text-2xl font-bold text-text-primary mb-6 text-center gradient-text">
