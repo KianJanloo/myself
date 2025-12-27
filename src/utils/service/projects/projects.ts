@@ -79,4 +79,3 @@ export const projects = [
         company: "Kian Janloo",
     }
 ]
-
