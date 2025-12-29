@@ -28,3 +28,5 @@ export const skills = [
   { name: "AWS (S3)", rate: 100, category: "backend" },
   { name: "Jest", rate: 100, category: "backend" },
 ];
+
+
