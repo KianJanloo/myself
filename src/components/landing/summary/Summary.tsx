@@ -1,4 +1,4 @@
-import kian from "@/assets/Kian.png";
+import kian from "@/assets/Kian.jpg";
 import { BlurFade } from "@/components/ui/blur-fade";
 import { motion } from "framer-motion";
 
