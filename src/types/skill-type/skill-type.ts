@@ -4,4 +4,3 @@ export interface ISkill {
     idx: number;
     category?: string;
 }
-
