@@ -8,4 +8,3 @@ const routes = [
 ];
 
 export { routes };
-
