@@ -2,6 +2,8 @@ export const skills = [
   // Programming Languages
   { name: "JavaScript (ES6+)", rate: 100, category: "languages" },
   { name: "TypeScript", rate: 100, category: "languages" },
+  { name: "C#", rate: 50, category: "languages" },
+  { name: "Python", rate: 50, category: "languages" },
 
   // Frontend Technologies
   { name: "React", rate: 100, category: "frontend" },
