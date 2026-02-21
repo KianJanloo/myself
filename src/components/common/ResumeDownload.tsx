@@ -4,7 +4,7 @@ import { FaDownload } from "react-icons/fa"
 const ResumeDownload = () => {
   return (
     <motion.div
-      className="fixed bottom-6 right-6 z-50"
+      className="lg:fixed bottom-6 right-6 z-50"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 2, duration: 0.5 }}
