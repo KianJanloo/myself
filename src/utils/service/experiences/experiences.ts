@@ -2,7 +2,7 @@ export const experiences = [
   {
     company: "Sahar SMS",
     role: "Full-Stack Developer",
-    period: "07/2025 - 10/2025",
+    period: "1/2026 - 5/2026",
     location: "Tehran (Remote)",
     bullets: [
       "Built secure REST APIs with Node.js/TypeScript using JWT, RBAC, middleware, and rate limiting, and optimized PostgreSQL schemas with TypeORM (relations, indexes, migrations).",
@@ -14,7 +14,7 @@ export const experiences = [
   {
     company: "Hexorix",
     role: "Back-End Developer",
-    period: "03/2025 - 06/2025",
+    period: "9/2025 - 12/2025",
     location: "Remote",
     bullets: [
       "Built scalable backend services using Express.js, NestJS, and TypeScript, following clean architecture and modular patterns.",
@@ -26,7 +26,7 @@ export const experiences = [
   {
     company: "Apanco",
     role: "Front-End Developer",
-    period: "09/2023 - 03/2025",
+    period: "1/2024 - 06/2025",
     location: "Sari, Mazandaran",
     bullets: [
       "Converted UX/UI wireframes into production-ready React, TypeScript, and Next.js applications, reducing post-launch issues and optimizing performance.",
@@ -38,7 +38,7 @@ export const experiences = [
   {
     company: "Sepehr Academy",
     role: "Front-End Developer",
-    period: "03/2022 - 09/2023",
+    period: "03/2022 - 12/2023",
     location: "Sari, Mazandaran",
     bullets: [
       "Collaborated in a 3-member Agile team to build scalable, responsive React applications with modular, reusable components, improving development efficiency.",

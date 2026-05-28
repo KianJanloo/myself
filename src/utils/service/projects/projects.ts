@@ -1,11 +1,11 @@
 export const projects = [
     {
-        title: "Bama Real State",
+        title: "Rumma Real State",
         date: "10/2025",
-        link: "https://bama-front-end.vercel.app/",
-        github: "https://github.com/KianJanloo/bama-front-end",
+        link: "https://rumma-front-end.vercel.app/",
+        github: "https://github.com/KianJanloo/rumma-front-end",
         type: "NextJs",
-        company: "Bama Real State",
+        company: "Rumma Real State",
     },
     {
         title: "Delta Real Estate Web Site",
@@ -64,12 +64,12 @@ export const projects = [
         company: "Kian Janloo",
     },
     {
-        title: "Bama Real State ( Back End )",
+        title: "Rumma Real State ( Back End )",
         date: "10/2025",
         link: "https://bama98.liara.run/",
-        github: "https://github.com/KianJanloo/bama-backend",
+        github: "https://github.com/KianJanloo/rumma-backend",
         type: "NestJs",
-        company: "Bama Real State",
+        company: "Rumma Real State",
     },
     {
         title: "Bag API ( Back End )",
