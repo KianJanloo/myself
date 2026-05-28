@@ -34,7 +34,9 @@ const Summary = () => {
                 <h1 className="text-5xl lg:text-6xl max-md:text-4xl font-bold mb-4">
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
-                  <span className="text-white whitespace-nowrap">Full-Stack Developer</span>
+                  <span className="text-white whitespace-nowrap">
+                    Full-Stack Developer
+                  </span>
                 </h1>
               </motion.div>
 
@@ -53,9 +55,9 @@ const Summary = () => {
                 </p>
 
                 <p className="text-lg text-text-muted  leading-relaxed">
-                  With 4+ years of experience, I focus on performance,
-                  accessibility, and pixel-perfect design to deliver products
-                  that delight users and drive business growth.
+                  I focus on performance, accessibility, and pixel-perfect
+                  design to deliver products that delight users and drive
+                  business growth.
                 </p>
 
                 <p className="text-lg text-text-muted leading-relaxed">
