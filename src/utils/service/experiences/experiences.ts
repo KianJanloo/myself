@@ -1,26 +1,26 @@
 export const experiences = [
   {
+    company: "Hexorix",
+    role: "Back-End Developer",
+    period: "1/2026 - 5/2026",
+    location: "Tehran (Remote)",
+    bullets: [
+      "Built scalable backend services using Express.js, NestJS, and TypeScript, following clean architecture and modular patterns.",
+      "Designed optimized PostgreSQL/MongoDB databases with TypeORM and Mongoose to improve performance and data consistency.",
+      "Developed secure REST/GraphQL APIs with JWT, RBAC, validation, plus Redis-based caching, sessions, and rate limiting.",
+      "Improved reliability with Jest tests, documented APIs with Swagger, and containerized services using Docker for smoother CI/CD.",
+    ],
+  },
+  {
     company: "Sahar SMS",
     role: "Full-Stack Developer",
-    period: "1/2026 - 5/2026",
+    period: "9/2025 - 12/2025",
     location: "Tehran (Remote)",
     bullets: [
       "Built secure REST APIs with Node.js/TypeScript using JWT, RBAC, middleware, and rate limiting, and optimized PostgreSQL schemas with TypeORM (relations, indexes, migrations).",
       "Improved backend performance with Redis caching, session storage, and background job queues.",
       "Developed fast, SEO-friendly Next.js/React applications with SSR, SSG, ISR, dynamic imports, and code-splitting.",
       "Delivered responsive, accessible UIs from Figma and created reusable component libraries documented in Storybook.",
-    ],
-  },
-  {
-    company: "Hexorix",
-    role: "Back-End Developer",
-    period: "9/2025 - 12/2025",
-    location: "Remote",
-    bullets: [
-      "Built scalable backend services using Express.js, NestJS, and TypeScript, following clean architecture and modular patterns.",
-      "Designed optimized PostgreSQL/MongoDB databases with TypeORM and Mongoose to improve performance and data consistency.",
-      "Developed secure REST/GraphQL APIs with JWT, RBAC, validation, plus Redis-based caching, sessions, and rate limiting.",
-      "Improved reliability with Jest tests, documented APIs with Swagger, and containerized services using Docker for smoother CI/CD.",
     ],
   },
   {
