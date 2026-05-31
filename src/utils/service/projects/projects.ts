@@ -34,7 +34,7 @@ export const projects = [
     {
         title: "Todo List",
         date: "08/2025",
-        link: "https://todo-kian.netlify.app/",
+        // link: "https://todo-kian.netlify.app/",
         github: "https://github.com/KianJanloo/todo",
         type: "NextJs",
         company: "Kian Janloo",
@@ -42,7 +42,7 @@ export const projects = [
     {
         title: "Time Craft",
         date: "09/2025",
-        link: "https://time-craft-kian.netlify.app/",
+        // link: "https://time-craft-kian.netlify.app/",
         github: "https://github.com/KianJanloo/time-craft",
         type: "NextJs",
         company: "Sahar SMS",
@@ -58,7 +58,7 @@ export const projects = [
     {
         title: "Book City ( Back End )",
         date: "02/2025",
-        link: "https://book-city-production.up.railway.app/",
+        // link: "https://book-city-production.up.railway.app/",
         github: "https://github.com/KianJanloo/Book-City",
         type: "NestJs",
         company: "Kian Janloo",
