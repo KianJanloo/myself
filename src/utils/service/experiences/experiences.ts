@@ -3,7 +3,7 @@ export const experiences = [
     company: "Hexorix",
     role: "Back-End Developer",
     period: "1/2026 - 5/2026",
-    location: "Tehran (Remote)",
+    location: "UK (Remote)",
     bullets: [
       "Built scalable backend services using Express.js, NestJS, and TypeScript, following clean architecture and modular patterns.",
       "Designed optimized PostgreSQL/MongoDB databases with TypeORM and Mongoose to improve performance and data consistency.",
