@@ -1,5 +1,12 @@
 export const projects = [
     {
+        title: "Velonix",
+        date: "06/2026",
+        link: "https://velonixweb-production.up.railway.app/",
+        type: "turbo-repo (NextJs, NestJs)",
+        company: "Velonix",
+    },
+    {
         title: "Rumma Real State",
         date: "10/2025",
         link: "https://rumma-front-end.vercel.app/",
