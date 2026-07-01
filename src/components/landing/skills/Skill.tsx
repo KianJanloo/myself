@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useCallback } from 'react'
 import type { ISkill } from '../../../types/skill-type/skill-type'
 import { motion } from 'framer-motion'
 import { FaLanguage, FaLaptopCode, FaPaintBrush } from 'react-icons/fa'
@@ -14,67 +14,79 @@ const getCategoryIcon = (category: string) => {
 
 const getCategoryColor = (category: string) => {
   const colors = {
-    languages: 'from-purple-500 to-pink-600',
-    frontend: 'from-blue-500 to-purple-600',
-    backend: 'from-green-500 to-teal-600',
+    languages: 'from-amber-500 to-yellow-600',
+    frontend: 'from-amber-600 to-orange-500',
+    backend: 'from-yellow-500 to-amber-600',
   }
   return colors[category as keyof typeof colors] || 'from-gray-500 to-gray-600'
 }
 
 const Skill: React.FC<ISkill> = ({ name, idx, category = 'frontend' }) => {
+  const cardRef = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = cardRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const centerX = rect.width / 2
+    const centerY = rect.height / 2
+    const rotateX = ((y - centerY) / centerY) * -8
+    const rotateY = ((x - centerX) / centerX) * 8
+    el.style.transform = `perspective(600px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`
+  }, [])
+
+  const handleMouseLeave = useCallback(() => {
+    const el = cardRef.current
+    if (!el) return
+    el.style.transform = 'perspective(600px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)'
+  }, [])
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20, scale: 0.9 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ 
-        duration: 0.4, 
+      transition={{
+        duration: 0.4,
         delay: idx * 0.03,
         ease: [0.25, 0.46, 0.45, 0.94]
       }}
       viewport={{ once: true }}
-      className='group w-full'
+      className='group w-full perspective-1000'
     >
-      <motion.div 
-        className='glass rounded-2xl p-6 hover:shadow-xl hover:shadow-accent/20 transition-all duration-500 group-hover:scale-[1.02] group-hover:-translate-y-1 relative overflow-hidden'
-        whileHover={{ 
-          boxShadow: '0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.1)'
-        }}
+      <div
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{ transition: 'transform 0.2s ease-out', transformStyle: 'preserve-3d' }}
       >
-        <div className={`absolute inset-0 bg-gradient-to-br ${getCategoryColor(category)} opacity-0 group-hover:opacity-5 transition-opacity duration-500 rounded-2xl`}></div>
-        
-        <div className='flex items-center gap-4'>
-          <motion.div 
-            className='w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 transition-transform duration-300'
-            style={{
-              background: `linear-gradient(135deg, var(--skill-dot-start), var(--skill-dot-end))`
-            }}
-            whileHover={{ rotate: 5 }}
-          >
-            {getCategoryIcon(category)}
-          </motion.div>
-          <div className='flex-1'>
-            <p className='text-lg font-bold text-text-primary group-hover:gradient-text transition-all duration-300'>
-              {name}
-            </p>
-            <p className='text-xs text-text-muted capitalize group-hover:text-text-secondary transition-colors duration-300'>
-              {category}
-            </p>
+        <div className='relative rounded-2xl overflow-hidden'>
+          {/* Gradient border on hover */}
+          <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${getCategoryColor(category)} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
+
+          <div className='relative bg-card-bg/80 backdrop-blur-sm rounded-2xl p-5 border border-card-border group-hover:border-accent/30 transition-all duration-500'>
+            <div className='flex items-center gap-3'>
+              <div
+                className='w-10 h-10 rounded-lg flex items-center justify-center text-xl shadow-md group-hover:scale-110 group-hover:shadow-lg transition-all duration-300'
+                style={{
+                  background: `linear-gradient(135deg, var(--skill-dot-start), var(--skill-dot-end))`
+                }}
+              >
+                {getCategoryIcon(category)}
+              </div>
+              <div className='flex-1 min-w-0'>
+                <p className='text-sm font-bold text-text-primary group-hover:text-accent transition-colors duration-300 truncate'>
+                  {name}
+                </p>
+                <p className='text-[10px] text-text-muted capitalize'>
+                  {category}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <motion.div 
-          className='absolute top-2 right-2 w-2 h-2 rounded-full bg-accent/20 group-hover:bg-accent/40 transition-colors duration-300'
-          animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.5, 1, 0.5]
-          }}
-          transition={{ 
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        />
-      </motion.div>
+      </div>
     </motion.div>
   )
 }

@@ -1,25 +1,74 @@
 import kian from "@/assets/Kian.jpg";
 import { BlurFade } from "@/components/ui/blur-fade";
-import { motion } from "framer-motion";
+import TypingAnimation from "@/components/ui/TypingAnimation";
+import FloatingShapes from "@/components/ui/FloatingShapes";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+
+const TITLES = [
+  "Full-Stack Developer",
+  "React Specialist",
+  "UI/UX Enthusiast",
+  "Node.js Engineer",
+];
 
 const Summary = () => {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], [0, 150])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+
   return (
     <section
       id="summary"
-      className="min-h-screen flex items-center justify-center py-20"
+      ref={sectionRef}
+      className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center">
+      <FloatingShapes />
+
+      <motion.div
+        style={{ y, opacity }}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center relative z-10"
+      >
         <div className="flex max-lg:flex-col flex-row-reverse justify-center gap-12 max-lg:gap-16 items-center max-w-6xl mx-auto">
           <BlurFade inView delay={0.2} direction="left">
-            <div className="relative group">
-              <div className="absolute -inset-4 bg-gradient-to-r from-accent to-accent-secondary rounded-full opacity-75 group-hover:opacity-100 transition duration-1000 animate-pulse"></div>
-              <div className="relative">
-                <img
-                  src={kian || " "}
-                  alt="Kian Janloo - Full Stack Developer"
-                  className="w-72 h-72 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover Image Dec 20, 2025, 09_30_20 PM.png border-4 border-white/20 shadow-2xl transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="perspective-1000">
+              <div
+                className="relative group preserve-3d"
+                onMouseMove={(e) => {
+                  const el = e.currentTarget
+                  const rect = el.getBoundingClientRect()
+                  const x = e.clientX - rect.left
+                  const y = e.clientY - rect.top
+                  const centerX = rect.width / 2
+                  const centerY = rect.height / 2
+                  const rotateX = ((y - centerY) / centerY) * -8
+                  const rotateY = ((x - centerX) / centerX) * 8
+                  el.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)"
+                }}
+                style={{
+                  transition: "transform 0.2s ease-out",
+                  transformStyle: "preserve-3d",
+                }}
+              >
+                <div className="absolute -inset-3 bg-gradient-to-r from-accent via-gold-light to-accent-secondary rounded-full opacity-60 group-hover:opacity-100 transition duration-700 blur-sm" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-accent to-accent-secondary rounded-full opacity-40 group-hover:opacity-80 transition duration-700" />
+                <div className="relative">
+                  <img
+                    src={kian || " "}
+                    alt="Kian Janloo - Full Stack Developer"
+                    className="w-72 h-72 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-accent/30 shadow-2xl transition-transform duration-500"
+                    style={{ transform: "translateZ(30px)" }}
+                  />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                </div>
               </div>
             </div>
           </BlurFade>
@@ -35,7 +84,13 @@ const Summary = () => {
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
                   <span className="text-white whitespace-nowrap">
-                    Full-Stack Developer
+                    <TypingAnimation
+                      strings={TITLES}
+                      speed={70}
+                      deleteSpeed={40}
+                      pauseDuration={2000}
+                      className="text-text-primary"
+                    />
                   </span>
                 </h1>
               </motion.div>
@@ -49,12 +104,12 @@ const Summary = () => {
                 <p className="text-xl text-text-primary font-medium leading-relaxed">
                   A Full-Stack Developer passionate about building modern,
                   responsive, and user-centric web apps with{" "}
-                  <span className="gradient-text font-bold">React</span> ,{" "}
+                  <span className="gradient-text font-bold">React</span>,{" "}
                   <span className="gradient-text font-bold">Next.js</span> and{" "}
                   <span className="gradient-text font-bold">Node.js</span>.
                 </p>
 
-                <p className="text-lg text-text-muted  leading-relaxed">
+                <p className="text-lg text-text-muted leading-relaxed">
                   I focus on performance, accessibility, and pixel-perfect
                   design to deliver products that delight users and drive
                   business growth.
@@ -75,13 +130,13 @@ const Summary = () => {
               >
                 <a
                   href="#projects"
-                  className="px-8 py-3 bg-gradient-to-r from-accent to-accent-secondary text-white font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 transform hover:scale-105"
+                  className="px-8 py-3 bg-gradient-to-r from-accent to-accent-secondary text-background font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 transform hover:scale-105"
                 >
                   View My Work
                 </a>
                 <a
                   href="#contact"
-                  className="px-8 py-3 border-2 border-accent text-accent font-semibold rounded-full hover:bg-accent hover:text-white transition-all duration-300 transform hover:scale-105"
+                  className="px-8 py-3 border-2 border-accent text-accent font-semibold rounded-full hover:bg-accent hover:text-background transition-all duration-300 transform hover:scale-105"
                 >
                   Get In Touch
                 </a>
@@ -89,7 +144,7 @@ const Summary = () => {
             </div>
           </BlurFade>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

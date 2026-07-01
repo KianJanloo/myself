@@ -4,9 +4,9 @@ import resume from "/Resume.pdf"
 
 const ResumeBox = () => {
   return (
-    <div className="border-2 border-foreground/20 p-8 rounded-3xl max-w-5xl max-md:max-w-full mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
+    <div className="border-2 border-card-border p-8 rounded-3xl max-w-5xl max-md:max-w-full mx-auto shadow-2xl transform hover:scale-[1.02] transition-all duration-300">
       <header className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold text-white">Resume</h2>
+        <h2 className="text-2xl font-bold text-text-primary">Resume</h2>
         <motion.a 
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -32,7 +32,7 @@ const ResumeBox = () => {
         <div className="absolute bottom-0 left-0 w-full h-40 bg-gradient-to-t from-secondary via-secondary/80 to-transparent rounded-b-2xl"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-secondary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
       </div>
-      <div className="mt-4 text-gray-300 text-sm">
+      <div className="mt-4 text-text-muted text-sm">
         <p>Full-Stack Developer with over 4 years of experience in building modern web applications using React and Next.js. Passionate about creating seamless user experiences and delivering high-performance solutions.</p>
       </div>
     </div>

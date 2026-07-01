@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useTheme } from '@/context/ThemeContext'
 
 interface Particle {
   x: number
@@ -14,6 +15,7 @@ const ParticleBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const particlesRef = useRef<Particle[]>([])
   const animationRef = useRef<number | undefined>(undefined)
+  const { theme } = useTheme()
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -29,8 +31,9 @@ const ParticleBackground = () => {
 
     const createParticles = () => {
       particlesRef.current = []
-      const particleCount = Math.floor((canvas.width * canvas.height) / 10000)
-      
+      const baseCount = Math.floor((canvas.width * canvas.height) / 10000)
+      const particleCount = canvas.width < 768 ? Math.floor(baseCount / 2) : baseCount
+
       for (let i = 0; i < particleCount; i++) {
         particlesRef.current.push({
           x: Math.random() * canvas.width,
@@ -45,7 +48,12 @@ const ParticleBackground = () => {
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
-      
+
+      const isDark = document.documentElement.classList.contains('light') === false
+      const r = isDark ? 212 : 184
+      const g = isDark ? 168 : 145
+      const b = isDark ? 83 : 46
+
       particlesRef.current.forEach((particle, index) => {
         particle.x += particle.vx
         particle.y += particle.vy
@@ -55,7 +63,7 @@ const ParticleBackground = () => {
 
         ctx.beginPath()
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(99, 102, 241, ${particle.opacity})`
+        ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${particle.opacity})`
         ctx.fill()
 
         particlesRef.current.forEach((otherParticle, otherIndex) => {
@@ -68,7 +76,7 @@ const ParticleBackground = () => {
               ctx.beginPath()
               ctx.moveTo(particle.x, particle.y)
               ctx.lineTo(otherParticle.x, otherParticle.y)
-              ctx.strokeStyle = `rgba(99, 102, 241, ${0.1 * (1 - distance / 100)})`
+              ctx.strokeStyle = `rgba(${r}, ${g}, ${b}, ${0.1 * (1 - distance / 100)})`
               ctx.lineWidth = 0.5
               ctx.stroke()
             }
@@ -94,7 +102,7 @@ const ParticleBackground = () => {
       }
       window.removeEventListener('resize', resizeCanvas)
     }
-  }, [])
+  }, [theme])
 
   return (
     <motion.canvas

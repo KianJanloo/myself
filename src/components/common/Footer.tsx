@@ -9,7 +9,7 @@ const Footer = () => {
       name: 'GitHub',
       icon: <FaGithub className="w-5 h-5" />,
       href: 'https://github.com/KianJanloo',
-      color: 'hover:text-gray-400'
+      color: 'hover:text-accent'
     },
     {
       name: 'LinkedIn',
@@ -73,18 +73,17 @@ const Footer = () => {
             className="space-y-4"
           >
             <h4 className="text-lg font-semibold text-text-primary">Quick Links</h4>
-            <ul className="space-y-2">
+            <div className="flex flex-wrap gap-3">
               {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-text-muted hover:text-accent transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-text-muted hover:text-accent transition-colors duration-300 text-sm"
+                >
+                  {link.name}
+                </a>
               ))}
-            </ul>
+            </div>
           </motion.div>
 
           <motion.div

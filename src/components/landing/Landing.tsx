@@ -7,6 +7,7 @@ import Projects from "./projects/Projects"
 import ResumeBox from "./resume-box/ResumeBox"
 import Skills from "./skills/Skills"
 import Summary from "./summary/Summary"
+import ThemeSwitcher from "../common/ThemeSwitcher"
 import { motion, AnimatePresence } from "framer-motion"
 
 const NAV_ITEMS = [
@@ -28,7 +29,6 @@ const Landing = () => {
     setIsMobileMenuOpen(false)
   }, [])
 
-  // Close mobile menu on route change
   useEffect(() => {
     const handleHashChange = () => {
       setIsMobileMenuOpen(false)
@@ -37,7 +37,6 @@ const Landing = () => {
     return () => window.removeEventListener('hashchange', handleHashChange)
   }, [])
 
-  // Close mobile menu when clicking outside
   useEffect(() => {
     if (!isMobileMenuOpen) return
 
@@ -52,7 +51,6 @@ const Landing = () => {
     return () => document.removeEventListener('click', handleClickOutside)
   }, [isMobileMenuOpen, closeMobileMenu])
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden'
@@ -83,7 +81,7 @@ const Landing = () => {
     <Container>
       <div className="flex flex-col">
         {/* Navigation */}
-        <nav 
+        <nav
           className="fixed top-0 left-0 right-0 z-50 glass backdrop-blur-md border-b border-white/10"
           role="navigation"
           aria-label="Main navigation"
@@ -119,31 +117,34 @@ const Landing = () => {
                     {item.name}
                   </a>
                 ))}
+                <ThemeSwitcher />
               </motion.div>
-              
-              {/* Mobile menu button */}
-              <motion.button
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="md:hidden text-text-muted hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 rounded p-2"
-                onClick={toggleMobileMenu}
-                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMobileMenuOpen}
-                aria-controls="mobile-menu"
-              >
-                {isMobileMenuOpen ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  </svg>
-                )}
-              </motion.button>
+
+              <div className="flex items-center gap-2 md:hidden">
+                <ThemeSwitcher />
+                <motion.button
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="text-text-muted hover:text-accent transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-accent/50 rounded p-2"
+                  onClick={toggleMobileMenu}
+                  aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isMobileMenuOpen}
+                  aria-controls="mobile-menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  ) : (
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                  )}
+                </motion.button>
+              </div>
             </div>
-            
+
             {/* Mobile menu */}
             <AnimatePresence>
               {isMobileMenuOpen && (
@@ -183,7 +184,7 @@ const Landing = () => {
         {/* Main Content */}
         <div className="pt-20">
           <Summary />
-          
+
           <section id="experiences" className="py-20" aria-label="Work Experience">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.header

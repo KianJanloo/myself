@@ -42,7 +42,7 @@ class ErrorBoundary extends Component<Props, State> {
       }
 
       return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary to-background">
           <div className="max-w-md mx-auto text-center p-8">
             <div className="glass rounded-2xl p-8 border border-white/20">
               <div className="text-6xl text-red-400 mb-4">

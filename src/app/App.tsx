@@ -2,6 +2,7 @@ import { RouterProvider } from "react-router-dom"
 import { createBrowserRouter } from "react-router-dom";
 import { HeroUIProvider } from "@heroui/react";
 import { HelmetProvider } from 'react-helmet-async'
+import { ThemeProvider } from '../context/ThemeContext'
 import ErrorBoundary from '../components/common/ErrorBoundary'
 import LoadingScreen from '../components/common/LoadingScreen'
 import ScrollProgress from '../components/common/ScrollProgress'
@@ -17,18 +18,20 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <HelmetProvider>
-        <HeroUIProvider>
-          <SEOHead />
-          <LoadingScreen />
-          <ScrollProgress />
-          <ParticleBackground />
-          <RouterProvider router={router} />
-          <ResumeDownload />
-          <BackToTop />
-          <Footer />
-        </HeroUIProvider>
-      </HelmetProvider>
+      <ThemeProvider>
+        <HelmetProvider>
+          <HeroUIProvider>
+            <SEOHead />
+            <LoadingScreen />
+            <ScrollProgress />
+            <ParticleBackground />
+            <RouterProvider router={router} />
+            <ResumeDownload />
+            <BackToTop />
+            <Footer />
+          </HeroUIProvider>
+        </HelmetProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   )
 }
