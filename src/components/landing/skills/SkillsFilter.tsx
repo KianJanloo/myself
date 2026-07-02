@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FaLanguage, FaLaptopCode, FaPaintBrush } from 'react-icons/fa'
+import { FaLanguage, FaLaptopCode, FaPaintBrush, FaDatabase, FaShieldAlt, FaCloud, FaTools } from 'react-icons/fa'
 
 interface SkillsFilterProps {
   onFilterChange: (filter: string) => void
@@ -13,6 +13,10 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
     { key: 'languages', label: 'Languages', icon: <FaLanguage /> },
     { key: 'frontend', label: 'Frontend', icon: <FaPaintBrush /> },
     { key: 'backend', label: 'Backend', icon: <FaLaptopCode /> },
+    { key: 'databases', label: 'Databases', icon: <FaDatabase /> },
+    { key: 'auth', label: 'Auth', icon: <FaShieldAlt /> },
+    { key: 'devops', label: 'DevOps', icon: <FaCloud /> },
+    { key: 'tools', label: 'Tools', icon: <FaTools /> },
   ]
 
   const handleFilter = (filter: string) => {
