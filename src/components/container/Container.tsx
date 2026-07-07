@@ -1,9 +1,14 @@
 import React from 'react'
 import ParallaxLayer from '../ui/ParallaxLayer'
 
-const Container = ({ children }: { children: React.ReactNode }) => {
+interface ContainerProps {
+  children: React.ReactNode
+  overflowVisible?: boolean
+}
+
+const Container = ({ children, overflowVisible = false }: ContainerProps) => {
   return (
-    <div className='min-h-screen bg-gradient-to-br from-background via-secondary to-background bg-pattern relative overflow-hidden'>
+    <div className={`min-h-screen bg-gradient-to-br from-background via-secondary to-background bg-pattern relative ${overflowVisible ? '' : 'overflow-hidden'}`}>
       {/* Parallax depth layer 1 - slowest (background) */}
       <ParallaxLayer depth={0.005}>
         <div className="absolute inset-0 pointer-events-none">

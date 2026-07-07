@@ -8,6 +8,8 @@ import ResumeBox from "./resume-box/ResumeBox"
 import Skills from "./skills/Skills"
 import Summary from "./summary/Summary"
 import ThemeSwitcher from "../common/ThemeSwitcher"
+import ViewModeToggle from "../common/ViewModeToggle"
+import Preview3D from "./preview3d/Preview3D"
 import { motion, AnimatePresence } from "framer-motion"
 
 const NAV_ITEMS = [
@@ -20,6 +22,7 @@ const NAV_ITEMS = [
 
 const Landing = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [is3DMode, setIs3DMode] = useState(false)
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(prev => !prev)
@@ -78,7 +81,7 @@ const Landing = () => {
   const navItemsMemo = useMemo(() => NAV_ITEMS, [])
 
   return (
-    <Container>
+    <Container overflowVisible={is3DMode}>
       <div className="flex flex-col">
         {/* Navigation */}
         <nav
@@ -117,10 +120,12 @@ const Landing = () => {
                     {item.name}
                   </a>
                 ))}
+                <ViewModeToggle isRoadmap={is3DMode} onToggle={() => setIs3DMode((p) => !p)} />
                 <ThemeSwitcher />
               </motion.div>
 
               <div className="flex items-center gap-2 md:hidden">
+                <ViewModeToggle isRoadmap={is3DMode} onToggle={() => setIs3DMode((p) => !p)} />
                 <ThemeSwitcher />
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
@@ -183,7 +188,27 @@ const Landing = () => {
 
         {/* Main Content */}
         <div className="pt-20">
-          <Summary />
+          <AnimatePresence mode="wait">
+            {is3DMode ? (
+              <motion.div
+                key="3d-preview"
+                initial={{ opacity: 0, rotateX: 10 }}
+                animate={{ opacity: 1, rotateX: 0 }}
+                exit={{ opacity: 0, rotateX: -10 }}
+                transition={{ duration: 0.5 }}
+                style={{ perspective: "1200px" }}
+              >
+                <Preview3D />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="2d-standard"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <Summary />
 
           <section id="experiences" className="py-20" aria-label="Work Experience">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -266,6 +291,9 @@ const Landing = () => {
           </section>
 
           <ResumeBox />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </Container>
