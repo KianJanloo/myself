@@ -5,7 +5,6 @@ import Contact from "./contact/Contact"
 import Experience from "./experience/Experience"
 import Projects from "./projects/Projects"
 import ResumeBox from "./resume-box/ResumeBox"
-import Skills from "./skills/Skills"
 import Summary from "./summary/Summary"
 import ThemeSwitcher from "../common/ThemeSwitcher"
 import ViewModeToggle from "../common/ViewModeToggle"
@@ -16,7 +15,6 @@ const NAV_ITEMS = [
   { name: "About", href: "#summary" },
   { name: "Experience", href: "#experiences" },
   { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
   { name: "Contact", href: "#contact" }
 ] as const
 
@@ -247,26 +245,6 @@ const Landing = () => {
                 </p>
               </motion.header>
               <Projects />
-            </div>
-          </section>
-
-          <section id="skills" className="py-20" aria-label="Technical Skills">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.header
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                  Skills
-                </FlipText>
-                <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                  Technologies and tools I work with to bring ideas to life
-                </p>
-              </motion.header>
-              <Skills />
             </div>
           </section>
 
