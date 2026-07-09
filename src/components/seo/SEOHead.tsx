@@ -13,7 +13,7 @@ const SEOHead = ({
   title = "Kian Janloo - Full Stack Developer",
   description = "Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable and performant web applications.",
   keywords = "Full Stack Developer, React, Next.js, TypeScript, JavaScript, Web Development, Frontend, Backend, Portfolio",
-  image = "/og-image.jpg",
+  image = "/og-image.png",
   url = import.meta.env.VITE_SITE_URL || "https://myself-wheat.vercel.app",
   type = "website"
 }: SEOHeadProps) => {
@@ -30,18 +30,20 @@ const SEOHead = ({
       <meta property="og:url" content={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
+      <meta property="og:image" content={`${url}${image}`} />
       <meta property="og:site_name" content="Kian Janloo Portfolio" />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={url} />
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
-      <meta property="twitter:image" content={image} />
+      <meta property="twitter:image" content={`${url}${image}`} />
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="theme-color" content="#6366f1" />
-      <meta name="msapplication-TileColor" content="#6366f1" />
+      <meta name="theme-color" content="#d4a853" />
+      <meta name="msapplication-TileColor" content="#d4a853" />
+
+      <link rel="alternate" type="application/rss+xml" title="Kian Janloo Blog" href={`${url}/rss.xml`} />
 
       <script type="application/ld+json">
         {JSON.stringify({
@@ -51,7 +53,7 @@ const SEOHead = ({
           "jobTitle": "Full Stack Developer",
           "description": description,
           "url": url,
-          "image": image,
+          "image": `${url}${image}`,
           "sameAs": [
             "https://www.linkedin.com/in/kian-janloo-6b7473344/",
             "https://github.com/KianJanloo"

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kian Janloo - Blog</title>
+    <description>Thoughts, tutorials, and insights from my development journey</description>
+    <link>https://myself-wheat.vercel.app</link>
+    <atom:link href="https://myself-wheat.vercel.app/rss.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Thu, 09 Jul 2026 18:07:20 GMT</lastBuildDate>
+    <item>
+      <title>Optimizing React Performance: A Practical Guide</title>
+      <link>https://myself-wheat.vercel.app/#blog</link>
+      <pubDate>Mon, 15 Jun 2026 00:00:00 GMT</pubDate>
+      <description>Learn how to identify and fix performance bottlenecks in React applications using memoization, code splitting, and profiling tools.</description>
+      <category>React, Performance, TypeScript</category>
+    </item>
+    <item>
+      <title>Understanding SSR vs SSG in Next.js</title>
+      <link>https://myself-wheat.vercel.app/#blog</link>
+      <pubDate>Wed, 20 May 2026 00:00:00 GMT</pubDate>
+      <description>A deep dive into server-side rendering and static site generation in Next.js, and when to use each approach.</description>
+      <category>Next.js, SSR, SSG</category>
+    </item>
+    <item>
+      <title>Advanced TypeScript Patterns for Backend Development</title>
+      <link>https://myself-wheat.vercel.app/#blog</link>
+      <pubDate>Fri, 10 Apr 2026 00:00:00 GMT</pubDate>
+      <description>Explore discriminated unions, template literals, and conditional types to build type-safe NestJS applications.</description>
+      <category>TypeScript, NestJS, Backend</category>
+    </item>
+  </channel>
+</rss>
