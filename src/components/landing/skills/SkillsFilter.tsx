@@ -26,7 +26,7 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
 
   return (
     <motion.div
-      className="flex flex-wrap gap-4 mb-12 justify-center"
+      className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center"
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -36,7 +36,7 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
         <motion.button
           key={category.key}
           onClick={() => handleFilter(category.key)}
-          className={`px-6 py-3 rounded-2xl font-semibold transition-all duration-300 flex items-center gap-2 ${
+          className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 ${
             activeFilter === category.key
               ? 'bg-gradient-to-r from-accent to-accent-secondary text-white shadow-xl shadow-accent/25'
               : 'bg-white/10 text-text-muted hover:bg-white/20 hover:text-text-primary hover:shadow-lg'
@@ -47,7 +47,7 @@ const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: index * 0.1 }}
         >
-          <span className="text-lg">{category.icon}</span>
+          <span className="text-sm sm:text-lg">{category.icon}</span>
           <span>{category.label}</span>
         </motion.button>
       ))}

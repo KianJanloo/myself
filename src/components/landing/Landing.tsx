@@ -5,7 +5,6 @@ import Contact from "./contact/Contact"
 import Experience from "./experience/Experience"
 import Projects from "./projects/Projects"
 import Blog from "./blog/Blog"
-import Testimonials from "./testimonials/Testimonials"
 import CurrentlyLearning from "./currently-learning/CurrentlyLearning"
 import Skills from "./skills/Skills"
 import ResumeBox from "./resume-box/ResumeBox"
@@ -28,7 +27,6 @@ const Landing = () => {
       { name: t("nav.experience"), href: "#experiences" },
       { name: t("nav.projects"), href: "#projects" },
       { name: t("nav.blog"), href: "#blog" },
-      { name: t("nav.testimonials"), href: "#testimonials" },
       { name: t("nav.contact"), href: "#contact" },
     ],
     [t]
@@ -298,8 +296,6 @@ const Landing = () => {
                     <Experience />
                   </div>
                 </section>
-
-                <Testimonials />
 
                 <section
                   id="projects"

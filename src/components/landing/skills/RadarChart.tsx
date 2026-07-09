@@ -19,8 +19,8 @@ const RadarChart = ({ categories }: RadarChartProps) => {
       return {
         x: center + r * Math.cos(angle),
         y: center + r * Math.sin(angle),
-        labelX: center + (maxRadius + 20) * Math.cos(angle),
-        labelY: center + (maxRadius + 20) * Math.sin(angle),
+        labelX: center + (maxRadius + 24) * Math.cos(angle),
+        labelY: center + (maxRadius + 24) * Math.sin(angle),
         name: cat.name,
         value: cat.value,
       }
@@ -53,8 +53,13 @@ const RadarChart = ({ categories }: RadarChartProps) => {
   }, [n, center, maxRadius])
 
   return (
-    <div className="flex justify-center">
-      <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+    <div className="flex justify-center w-full">
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${size} ${size}`}
+        className="max-w-[350px] sm:max-w-[400px] w-full h-auto"
+      >
         {/* Grid */}
         {gridLines.map((pts, i) => (
           <polygon
@@ -119,7 +124,7 @@ const RadarChart = ({ categories }: RadarChartProps) => {
             y={p.labelY}
             textAnchor="middle"
             dominantBaseline="middle"
-            className="fill-text-muted text-[10px] font-medium"
+            className="fill-text-muted text-[10px] sm:text-xs font-medium"
           >
             {p.name}
           </text>

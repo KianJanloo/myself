@@ -31,12 +31,12 @@ const Skills = () => {
 
   return (
     <div className="w-full">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col items-center gap-4 mb-8">
         <SkillsFilter onFilterChange={setFilter} />
         <div className="flex gap-2">
           <button
             onClick={() => setViewMode("grid")}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
               viewMode === "grid"
                 ? "bg-accent/20 text-accent border border-accent/30"
                 : "text-text-muted hover:text-accent border border-white/10"
@@ -46,7 +46,7 @@ const Skills = () => {
           </button>
           <button
             onClick={() => setViewMode("radar")}
-            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 cursor-pointer ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
               viewMode === "radar"
                 ? "bg-accent/20 text-accent border border-accent/30"
                 : "text-text-muted hover:text-accent border border-white/10"
@@ -111,7 +111,7 @@ const Skills = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="glass rounded-2xl p-8 border border-white/10"
+            className="glass rounded-2xl p-4 sm:p-8 border border-white/10"
           >
             <RadarChart categories={radarData} />
           </motion.div>

@@ -7,7 +7,6 @@ export const translations = {
     "nav.experience": "Experience",
     "nav.projects": "Projects",
     "nav.blog": "Blog",
-    "nav.testimonials": "Testimonials",
     "nav.contact": "Contact",
     "nav.skills": "Skills",
 
@@ -38,10 +37,6 @@ export const translations = {
     "blog.readMore": "Read More",
     "blog.readTime": "min read",
     "blog.close": "Close",
-
-    // Testimonials
-    "testimonials.title": "Testimonials",
-    "testimonials.subtitle": "What people say about working with me",
 
     // Currently Learning
     "learning.title": "Currently Learning",
@@ -125,7 +120,6 @@ export const translations = {
     "nav.experience": "\u062a\u062c\u0631\u0628\u0647",
     "nav.projects": "\u067e\u0631\u0648\u0698\u0647\u200c\u0647\u0627",
     "nav.blog": "\u0628\u0644\u0627\u06af",
-    "nav.testimonials": "\u0646\u0638\u0631\u0627\u062a",
     "nav.contact": "\u062a\u0645\u0627\u0633",
     "nav.skills": "\u0645\u0647\u0627\u0631\u062a\u200c\u0647\u0627",
 
@@ -156,10 +150,6 @@ export const translations = {
     "blog.readMore": "\u062e\u0648\u062f\u062f\u0648\u0646 \u0628\u062e\u0648\u0627\u0646\u06cc\u062f",
     "blog.readTime": "\u062f\u0642\u06cc\u0642\u0647 \u062e\u0648\u0627\u0646\u062f\u0646",
     "blog.close": "\u0628\u0633\u062a\u0646",
-
-    // Testimonials
-    "testimonials.title": "\u0646\u0638\u0631\u0627\u062a",
-    "testimonials.subtitle": "\u062f\u06cc\u06af\u0631\u0627\u0646 \u062f\u0631\u0628\u0627\u0631\u0647\u200c\u06cc \u06a9\u0627\u0631 \u0628\u0627 \u0645\u0646 \u062d\u0636\u0648\u0631 \u0627\u0635\u0644\u06cc \u0645\u06cc\u200c\u06a9\u0646\u0646\u062f",
 
     // Currently Learning
     "learning.title": "\u062f\u0631 \u062d\u0627\u0644 \u06cc\u0627\u062f\u06af\u06cc\u0631\u06cc",
