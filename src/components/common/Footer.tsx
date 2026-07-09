@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion'
 import { FaGithub, FaLinkedin, FaEnvelope, FaHeart, FaCode } from 'react-icons/fa'
+import VisitorCounter from './VisitorCounter'
+import { useLanguage } from '@/i18n/LanguageContext'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const { t } = useLanguage()
 
   const socialLinks = [
     {
@@ -26,11 +29,11 @@ const Footer = () => {
   ]
 
   const quickLinks = [
-    { name: 'About', href: '#summary' },
-    { name: 'Experience', href: '#experiences' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Contact', href: '#contact' }
+    { name: t('nav.about'), href: '#summary' },
+    { name: t('nav.experience'), href: '#experiences' },
+    { name: t('nav.projects'), href: '#projects' },
+    { name: t('nav.blog'), href: '#blog' },
+    { name: t('nav.contact'), href: '#contact' }
   ]
 
   return (
@@ -46,8 +49,7 @@ const Footer = () => {
           >
             <h3 className="text-2xl font-bold gradient-text">Kian Janloo</h3>
             <p className="text-text-muted leading-relaxed">
-              Full Stack Developer passionate about creating exceptional digital experiences 
-              with modern technologies and clean code.
+              {t('footer.description')}
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((link) => (
@@ -72,11 +74,11 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-semibold text-text-primary">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-text-primary">{t('footer.quickLinks')}</h4>
             <div className="flex flex-wrap gap-3">
               {quickLinks.map((link) => (
                 <a
-                  key={link.name}
+                  key={link.href}
                   href={link.href}
                   className="text-text-muted hover:text-accent transition-colors duration-300 text-sm"
                 >
@@ -93,14 +95,14 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-lg font-semibold text-text-primary">Get In Touch</h4>
+            <h4 className="text-lg font-semibold text-text-primary">{t('footer.getInTouch')}</h4>
             <div className="space-y-2">
               <p className="text-text-muted">
                 <FaEnvelope className="inline w-4 h-4 mr-2" />
                 KianJanloo10@gmail.com
               </p>
               <p className="text-text-muted">
-                Available for freelance projects
+                {t('footer.available')}
               </p>
             </div>
           </motion.div>
@@ -114,16 +116,19 @@ const Footer = () => {
           className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
         >
           <div className="flex items-center space-x-2 text-text-muted">
-            <span>© {currentYear} Kian Janloo. Made with</span>
+            <span>© {currentYear} Kian Janloo. {t('footer.madeWith')}</span>
             <FaHeart className="w-4 h-4 text-red-500 animate-pulse" />
-            <span>and</span>
+            <span>{t('footer.and')}</span>
             <FaCode className="w-4 h-4 text-accent" />
           </div>
-          
-          <div className="flex items-center space-x-4 text-sm text-text-muted">
-            <span>Built with React & TypeScript</span>
-            <span>•</span>
-            <span>Deployed on Vercel</span>
+
+          <div className="flex items-center gap-4">
+            <VisitorCounter />
+            <div className="flex items-center space-x-4 text-sm text-text-muted">
+              <span>{t('footer.builtWith')}</span>
+              <span>•</span>
+              <span>{t('footer.deployedOn')}</span>
+            </div>
           </div>
         </motion.div>
       </div>

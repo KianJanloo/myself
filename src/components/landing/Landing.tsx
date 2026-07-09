@@ -4,26 +4,38 @@ import { FlipText } from "../ui/flip-text"
 import Contact from "./contact/Contact"
 import Experience from "./experience/Experience"
 import Projects from "./projects/Projects"
+import Blog from "./blog/Blog"
+import Testimonials from "./testimonials/Testimonials"
+import CurrentlyLearning from "./currently-learning/CurrentlyLearning"
+import Skills from "./skills/Skills"
 import ResumeBox from "./resume-box/ResumeBox"
 import Summary from "./summary/Summary"
 import ThemeSwitcher from "../common/ThemeSwitcher"
+import LanguageSwitcher from "../common/LanguageSwitcher"
 import ViewModeToggle from "../common/ViewModeToggle"
 import Preview3D from "./preview3d/Preview3D"
 import { motion, AnimatePresence } from "framer-motion"
-
-const NAV_ITEMS = [
-  { name: "About", href: "#summary" },
-  { name: "Experience", href: "#experiences" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" }
-] as const
+import { useLanguage } from "@/i18n/LanguageContext"
 
 const Landing = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [is3DMode, setIs3DMode] = useState(false)
+  const { t } = useLanguage()
+
+  const NAV_ITEMS = useMemo(
+    () => [
+      { name: t("nav.about"), href: "#summary" },
+      { name: t("nav.experience"), href: "#experiences" },
+      { name: t("nav.projects"), href: "#projects" },
+      { name: t("nav.blog"), href: "#blog" },
+      { name: t("nav.testimonials"), href: "#testimonials" },
+      { name: t("nav.contact"), href: "#contact" },
+    ],
+    [t]
+  )
 
   const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen(prev => !prev)
+    setIsMobileMenuOpen((prev) => !prev)
   }, [])
 
   const closeMobileMenu = useCallback(() => {
@@ -34,8 +46,8 @@ const Landing = () => {
     const handleHashChange = () => {
       setIsMobileMenuOpen(false)
     }
-    window.addEventListener('hashchange', handleHashChange)
-    return () => window.removeEventListener('hashchange', handleHashChange)
+    window.addEventListener("hashchange", handleHashChange)
+    return () => window.removeEventListener("hashchange", handleHashChange)
   }, [])
 
   useEffect(() => {
@@ -43,40 +55,41 @@ const Landing = () => {
 
     const handleClickOutside = (event: MouseEvent) => {
       const target = event.target as HTMLElement
-      if (!target.closest('nav')) {
+      if (!target.closest("nav")) {
         closeMobileMenu()
       }
     }
 
-    document.addEventListener('click', handleClickOutside)
-    return () => document.removeEventListener('click', handleClickOutside)
+    document.addEventListener("click", handleClickOutside)
+    return () => document.removeEventListener("click", handleClickOutside)
   }, [isMobileMenuOpen, closeMobileMenu])
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden"
     } else {
-      document.body.style.overflow = ''
+      document.body.style.overflow = ""
     }
     return () => {
-      document.body.style.overflow = ''
+      document.body.style.overflow = ""
     }
   }, [isMobileMenuOpen])
 
-  const handleNavClick = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
-    const href = e.currentTarget.getAttribute('href')
-    if (href?.startsWith('#')) {
-      e.preventDefault()
-      const targetId = href.substring(1)
-      const targetElement = document.getElementById(targetId)
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        closeMobileMenu()
+  const handleNavClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      const href = e.currentTarget.getAttribute("href")
+      if (href?.startsWith("#")) {
+        e.preventDefault()
+        const targetId = href.substring(1)
+        const targetElement = document.getElementById(targetId)
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth", block: "start" })
+          closeMobileMenu()
+        }
       }
-    }
-  }, [closeMobileMenu])
-
-  const navItemsMemo = useMemo(() => NAV_ITEMS, [])
+    },
+    [closeMobileMenu]
+  )
 
   return (
     <Container overflowVisible={is3DMode}>
@@ -106,24 +119,31 @@ const Landing = () => {
                 className="hidden md:flex items-center space-x-8"
                 role="menubar"
               >
-                {navItemsMemo.map((item) => (
+                {NAV_ITEMS.map((item) => (
                   <a
-                    key={item.name}
+                    key={item.href}
                     href={item.href}
                     onClick={handleNavClick}
                     className="text-text-muted hover:text-accent transition-colors duration-300 font-medium text-sm lg:text-base focus:outline-none focus:ring-2 focus:ring-accent/50 rounded px-2 py-1"
                     role="menuitem"
-                    aria-label={`Navigate to ${item.name} section`}
                   >
                     {item.name}
                   </a>
                 ))}
-                <ViewModeToggle isRoadmap={is3DMode} onToggle={() => setIs3DMode((p) => !p)} />
+                <ViewModeToggle
+                  isRoadmap={is3DMode}
+                  onToggle={() => setIs3DMode((p) => !p)}
+                />
+                <LanguageSwitcher />
                 <ThemeSwitcher />
               </motion.div>
 
               <div className="flex items-center gap-2 md:hidden">
-                <ViewModeToggle isRoadmap={is3DMode} onToggle={() => setIs3DMode((p) => !p)} />
+                <ViewModeToggle
+                  isRoadmap={is3DMode}
+                  onToggle={() => setIs3DMode((p) => !p)}
+                />
+                <LanguageSwitcher />
                 <ThemeSwitcher />
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
@@ -136,12 +156,34 @@ const Landing = () => {
                   aria-controls="mobile-menu"
                 >
                   {isMobileMenuOpen ? (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
                     </svg>
                   ) : (
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      aria-hidden="true"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
                     </svg>
                   )}
                 </motion.button>
@@ -162,9 +204,9 @@ const Landing = () => {
                   aria-label="Mobile navigation menu"
                 >
                   <div className="flex flex-col space-y-4 pt-4">
-                    {navItemsMemo.map((item, index) => (
+                    {NAV_ITEMS.map((item, index) => (
                       <motion.a
-                        key={item.name}
+                        key={item.href}
                         href={item.href}
                         onClick={handleNavClick}
                         initial={{ opacity: 0, x: -20 }}
@@ -172,7 +214,6 @@ const Landing = () => {
                         transition={{ delay: index * 0.1 }}
                         className="text-text-muted hover:text-accent transition-colors duration-300 font-medium py-2 focus:outline-none focus:ring-2 focus:ring-accent/50 rounded px-2"
                         role="menuitem"
-                        aria-label={`Navigate to ${item.name} section`}
                       >
                         {item.name}
                       </motion.a>
@@ -208,67 +249,131 @@ const Landing = () => {
               >
                 <Summary />
 
-          <section id="experiences" className="py-20" aria-label="Work Experience">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.header
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                  Experience
-                </FlipText>
-                <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                  My professional journey and the companies I've had the privilege to work with
-                </p>
-              </motion.header>
-              <Experience />
-            </div>
-          </section>
+                <section
+                  id="skills"
+                  className="py-20"
+                  aria-label="Skills"
+                >
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.header
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="text-center mb-16"
+                    >
+                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                        {t("skills.title")}
+                      </FlipText>
+                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                        {t("skills.subtitle")}
+                      </p>
+                    </motion.header>
+                    <Skills />
+                  </div>
+                </section>
 
-          <section id="projects" className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent" aria-label="Projects Portfolio">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.header
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                  Projects
-                </FlipText>
-                <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                  A showcase of my recent work and personal projects
-                </p>
-              </motion.header>
-              <Projects />
-            </div>
-          </section>
+                <CurrentlyLearning />
 
-          <section id="contact" className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent" aria-label="Contact Information">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.header
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                  Contact
-                </FlipText>
-                <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                  Let's connect and discuss how we can work together
-                </p>
-              </motion.header>
-              <Contact />
-            </div>
-          </section>
+                <section
+                  id="experiences"
+                  className="py-20"
+                  aria-label="Work Experience"
+                >
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.header
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="text-center mb-16"
+                    >
+                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                        {t("experience.title")}
+                      </FlipText>
+                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                        {t("experience.subtitle")}
+                      </p>
+                    </motion.header>
+                    <Experience />
+                  </div>
+                </section>
 
-          <ResumeBox />
+                <Testimonials />
+
+                <section
+                  id="projects"
+                  className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
+                  aria-label="Projects Portfolio"
+                >
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.header
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="text-center mb-16"
+                    >
+                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                        {t("projects.title")}
+                      </FlipText>
+                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                        {t("projects.subtitle")}
+                      </p>
+                    </motion.header>
+                    <Projects />
+                  </div>
+                </section>
+
+                <section
+                  id="blog"
+                  className="py-20"
+                  aria-label="Blog"
+                >
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.header
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="text-center mb-16"
+                    >
+                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                        {t("blog.title")}
+                      </FlipText>
+                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                        {t("blog.subtitle")}
+                      </p>
+                    </motion.header>
+                    <Blog />
+                  </div>
+                </section>
+
+                <section
+                  id="contact"
+                  className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
+                  aria-label="Contact Information"
+                >
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <motion.header
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6 }}
+                      viewport={{ once: true }}
+                      className="text-center mb-16"
+                    >
+                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                        {t("contact.title")}
+                      </FlipText>
+                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                        {t("contact.subtitle")}
+                      </p>
+                    </motion.header>
+                    <Contact />
+                  </div>
+                </section>
+
+                <ResumeBox />
               </motion.div>
             )}
           </AnimatePresence>
