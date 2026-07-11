@@ -43,8 +43,6 @@ const SEOHead = ({
       <meta name="theme-color" content="#d4a853" />
       <meta name="msapplication-TileColor" content="#d4a853" />
 
-      <link rel="alternate" type="application/rss+xml" title="Kian Janloo Blog" href={`${url}/rss.xml`} />
-
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",

@@ -4,8 +4,6 @@ import { FlipText } from "../ui/flip-text"
 import Contact from "./contact/Contact"
 import Experience from "./experience/Experience"
 import Projects from "./projects/Projects"
-import Blog from "./blog/Blog"
-import CurrentlyLearning from "./currently-learning/CurrentlyLearning"
 import Skills from "./skills/Skills"
 import ResumeBox from "./resume-box/ResumeBox"
 import Summary from "./summary/Summary"
@@ -23,7 +21,6 @@ const Landing = () => {
       { name: "About", href: "#summary" },
       { name: "Experience", href: "#experiences" },
       { name: "Projects", href: "#projects" },
-      { name: "Blog", href: "#blog" },
       { name: "Contact", href: "#contact" },
     ],
     []
@@ -266,8 +263,6 @@ const Landing = () => {
                   </div>
                 </section>
 
-                <CurrentlyLearning />
-
                 <section
                   id="experiences"
                   className="py-20"
@@ -313,30 +308,6 @@ const Landing = () => {
                       </p>
                     </motion.header>
                     <Projects />
-                  </div>
-                </section>
-
-                <section
-                  id="blog"
-                  className="py-20"
-                  aria-label="Blog"
-                >
-                  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.header
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6 }}
-                      viewport={{ once: true }}
-                      className="text-center mb-16"
-                    >
-                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        Blog
-                      </FlipText>
-                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        Thoughts, tutorials, and insights from my development journey
-                      </p>
-                    </motion.header>
-                    <Blog />
                   </div>
                 </section>
 

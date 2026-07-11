@@ -9,7 +9,6 @@
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "preview": "vite preview",
-    "rss": "node scripts/generate-rss.js",
     "og": "node scripts/generate-og.js"
   },
   "dependencies": {
