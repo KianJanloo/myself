@@ -4,11 +4,8 @@ import TypingAnimation from "@/components/ui/TypingAnimation";
 import FloatingShapes from "@/components/ui/FloatingShapes";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { useLanguage } from "@/i18n/LanguageContext";
-
 const Summary = () => {
   const sectionRef = useRef<HTMLDivElement>(null)
-  const { t } = useLanguage()
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -17,7 +14,7 @@ const Summary = () => {
   const y = useTransform(scrollYProgress, [0, 1], [0, 150])
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
 
-  const titles = t("summary.titles")
+  const titles = ["Full-Stack Developer", "React Specialist", "UI/UX Enthusiast", "Node.js Engineer"]
 
   return (
     <section
@@ -78,7 +75,7 @@ const Summary = () => {
                 transition={{ duration: 0.4, delay: 0.3 }}
               >
                 <h1 className="text-5xl lg:text-6xl max-md:text-4xl font-bold mb-4">
-                  <span className="gradient-text">{t("summary.greeting")}</span>
+                  <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
                   <span className="text-white whitespace-nowrap">
                     <TypingAnimation
@@ -99,18 +96,18 @@ const Summary = () => {
                 className="space-y-4"
               >
                 <p className="text-xl text-text-primary font-medium leading-relaxed">
-                  {t("summary.bio1")}{" "}
+                  A Full-Stack Developer passionate about building modern, responsive, and user-centric web apps with{" "}
                   <span className="gradient-text font-bold">React</span>,{" "}
                   <span className="gradient-text font-bold">Next.js</span> and{" "}
                   <span className="gradient-text font-bold">Node.js</span>.
                 </p>
 
                 <p className="text-lg text-text-muted leading-relaxed">
-                  {t("summary.bio2")}
+                  I focus on performance, accessibility, and pixel-perfect design to deliver products that delight users and drive business growth.
                 </p>
 
                 <p className="text-lg text-text-muted leading-relaxed">
-                  {t("summary.bio3")}
+                  Always eager to learn new technologies, tackle challenging problems, and collaborate with creative teams to turn ideas into reality.
                 </p>
               </motion.div>
 
@@ -124,13 +121,13 @@ const Summary = () => {
                   href="#projects"
                   className="px-8 py-3 bg-gradient-to-r from-accent to-accent-secondary text-background font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 transform hover:scale-105"
                 >
-                  {t("summary.viewWork")}
+                  View My Work
                 </a>
                 <a
                   href="#contact"
                   className="px-8 py-3 border-2 border-accent text-accent font-semibold rounded-full hover:bg-accent hover:text-background transition-all duration-300 transform hover:scale-105"
                 >
-                  {t("summary.getInTouch")}
+                  Get In Touch
                 </a>
               </motion.div>
             </div>

@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { HeroUIProvider } from "@heroui/react";
 import { HelmetProvider } from 'react-helmet-async'
 import { ThemeProvider } from '../context/ThemeContext'
-import { LanguageProvider } from '../i18n/LanguageContext'
+
 import ErrorBoundary from '../components/common/ErrorBoundary'
 import LoadingScreen from '../components/common/LoadingScreen'
 import ScrollProgress from '../components/common/ScrollProgress'
@@ -40,13 +40,11 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        <LanguageProvider>
-          <HelmetProvider>
+        <HelmetProvider>
             <HeroUIProvider>
               <AppContent />
             </HeroUIProvider>
           </HelmetProvider>
-        </LanguageProvider>
       </ThemeProvider>
     </ErrorBoundary>
   )

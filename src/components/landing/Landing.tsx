@@ -10,26 +10,23 @@ import Skills from "./skills/Skills"
 import ResumeBox from "./resume-box/ResumeBox"
 import Summary from "./summary/Summary"
 import ThemeSwitcher from "../common/ThemeSwitcher"
-import LanguageSwitcher from "../common/LanguageSwitcher"
+
 import ViewModeToggle from "../common/ViewModeToggle"
 import Preview3D from "./preview3d/Preview3D"
 import { motion, AnimatePresence } from "framer-motion"
-import { useLanguage } from "@/i18n/LanguageContext"
-
 const Landing = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [is3DMode, setIs3DMode] = useState(false)
-  const { t } = useLanguage()
 
   const NAV_ITEMS = useMemo(
     () => [
-      { name: t("nav.about"), href: "#summary" },
-      { name: t("nav.experience"), href: "#experiences" },
-      { name: t("nav.projects"), href: "#projects" },
-      { name: t("nav.blog"), href: "#blog" },
-      { name: t("nav.contact"), href: "#contact" },
+      { name: "About", href: "#summary" },
+      { name: "Experience", href: "#experiences" },
+      { name: "Projects", href: "#projects" },
+      { name: "Blog", href: "#blog" },
+      { name: "Contact", href: "#contact" },
     ],
-    [t]
+    []
   )
 
   const toggleMobileMenu = useCallback(() => {
@@ -132,7 +129,6 @@ const Landing = () => {
                   isRoadmap={is3DMode}
                   onToggle={() => setIs3DMode((p) => !p)}
                 />
-                <LanguageSwitcher />
                 <ThemeSwitcher />
               </motion.div>
 
@@ -141,7 +137,6 @@ const Landing = () => {
                   isRoadmap={is3DMode}
                   onToggle={() => setIs3DMode((p) => !p)}
                 />
-                <LanguageSwitcher />
                 <ThemeSwitcher />
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
@@ -261,10 +256,10 @@ const Landing = () => {
                       className="text-center mb-16"
                     >
                       <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        {t("skills.title")}
+                        Skills
                       </FlipText>
                       <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        {t("skills.subtitle")}
+                        Technologies and tools I work with
                       </p>
                     </motion.header>
                     <Skills />
@@ -287,10 +282,10 @@ const Landing = () => {
                       className="text-center mb-16"
                     >
                       <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        {t("experience.title")}
+                        Experience
                       </FlipText>
                       <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        {t("experience.subtitle")}
+                        My professional journey and the companies I've had the privilege to work with
                       </p>
                     </motion.header>
                     <Experience />
@@ -311,10 +306,10 @@ const Landing = () => {
                       className="text-center mb-16"
                     >
                       <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        {t("projects.title")}
+                        Projects
                       </FlipText>
                       <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        {t("projects.subtitle")}
+                        A showcase of my recent work and personal projects
                       </p>
                     </motion.header>
                     <Projects />
@@ -335,10 +330,10 @@ const Landing = () => {
                       className="text-center mb-16"
                     >
                       <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        {t("blog.title")}
+                        Blog
                       </FlipText>
                       <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        {t("blog.subtitle")}
+                        Thoughts, tutorials, and insights from my development journey
                       </p>
                     </motion.header>
                     <Blog />
@@ -359,10 +354,10 @@ const Landing = () => {
                       className="text-center mb-16"
                     >
                       <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-                        {t("contact.title")}
+                        Contact
                       </FlipText>
                       <p className="text-xl text-text-muted max-w-2xl mx-auto">
-                        {t("contact.subtitle")}
+                        Let's connect and discuss how we can work together
                       </p>
                     </motion.header>
                     <Contact />

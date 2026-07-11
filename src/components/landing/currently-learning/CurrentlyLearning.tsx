@@ -1,10 +1,7 @@
 import { motion } from "framer-motion"
 import { FlipText } from "@/components/ui/flip-text"
 import { currentlyLearning } from "@/utils/service/currently-learning/currentlyLearning"
-import { useLanguage } from "@/i18n/LanguageContext"
-
 const CurrentlyLearning = () => {
-  const { t } = useLanguage()
 
   return (
     <section className="py-20" aria-label="Currently Learning">
@@ -17,10 +14,10 @@ const CurrentlyLearning = () => {
           className="text-center mb-12"
         >
           <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
-            {t("learning.title")}
+            Currently Learning
           </FlipText>
           <p className="text-xl text-text-muted max-w-2xl mx-auto">
-            {t("learning.subtitle")}
+            Topics I'm exploring right now
           </p>
         </motion.header>
 

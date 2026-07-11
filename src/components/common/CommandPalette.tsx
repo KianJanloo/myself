@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/context/ThemeContext"
-import { useLanguage } from "@/i18n/LanguageContext"
-import { FaSearch, FaArrowUp, FaFileDownload, FaPalette, FaLanguage, FaRocket, FaUser, FaBriefcase, FaFolderOpen, FaEnvelope, FaCode } from "react-icons/fa"
+import { FaSearch, FaArrowUp, FaFileDownload, FaPalette, FaUser, FaBriefcase, FaFolderOpen, FaEnvelope, FaCode } from "react-icons/fa"
 
 interface CommandItem {
   id: string
@@ -19,23 +18,21 @@ const CommandPalette = () => {
   const inputRef = useRef<HTMLInputElement>(null)
   const listRef = useRef<HTMLDivElement>(null)
   const { toggleTheme, theme } = useTheme()
-  const { language, toggleLanguage, t } = useLanguage()
 
   const commands: CommandItem[] = useMemo(
     () => [
       // Sections
-      { id: "about", label: t("nav.about"), icon: <FaUser />, category: t("cmd.sections"), action: () => document.getElementById("summary")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "experience", label: t("nav.experience"), icon: <FaBriefcase />, category: t("cmd.sections"), action: () => document.getElementById("experiences")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "projects", label: t("nav.projects"), icon: <FaFolderOpen />, category: t("cmd.sections"), action: () => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "contact", label: t("nav.contact"), icon: <FaEnvelope />, category: t("cmd.sections"), action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "skills", label: t("nav.skills"), icon: <FaCode />, category: t("cmd.sections"), action: () => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" }) },
+      { id: "about", label: "About", icon: <FaUser />, category: "Sections", action: () => document.getElementById("summary")?.scrollIntoView({ behavior: "smooth" }) },
+      { id: "experience", label: "Experience", icon: <FaBriefcase />, category: "Sections", action: () => document.getElementById("experiences")?.scrollIntoView({ behavior: "smooth" }) },
+      { id: "projects", label: "Projects", icon: <FaFolderOpen />, category: "Sections", action: () => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) },
+      { id: "contact", label: "Contact", icon: <FaEnvelope />, category: "Sections", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
+      { id: "skills", label: "Skills", icon: <FaCode />, category: "Sections", action: () => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" }) },
       // Actions
-      { id: "top", label: "Back to Top", icon: <FaArrowUp />, category: t("cmd.actions"), action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-      { id: "resume", label: t("resume.downloadPdf"), icon: <FaFileDownload />, category: t("cmd.actions"), action: () => { const a = document.createElement("a"); a.href = "/Resume.pdf"; a.download = "Kian_Janloo_Resume.pdf"; a.click() } },
-      { id: "theme", label: `${t("cmd.actions")}: ${theme === "dark" ? "Light" : "Dark"} Mode`, icon: <FaPalette />, category: t("cmd.actions"), action: toggleTheme },
-      { id: "lang", label: `${t("cmd.actions")}: ${language === "en" ? "Farsi" : "English"}`, icon: <FaLanguage />, category: t("cmd.actions"), action: toggleLanguage },
+      { id: "top", label: "Back to Top", icon: <FaArrowUp />, category: "Actions", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
+      { id: "resume", label: "Download PDF", icon: <FaFileDownload />, category: "Actions", action: () => { const a = document.createElement("a"); a.href = "/Resume.pdf"; a.download = "Kian_Janloo_Resume.pdf"; a.click() } },
+      { id: "theme", label: `Actions: ${theme === "dark" ? "Light" : "Dark"} Mode`, icon: <FaPalette />, category: "Actions", action: toggleTheme },
     ],
-    [t, theme, language, toggleTheme, toggleLanguage]
+    [theme, toggleTheme]
   )
 
   const filtered = useMemo(() => {
@@ -133,7 +130,7 @@ const CommandPalette = () => {
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={t("cmd.placeholder")}
+                  placeholder="Search sections, projects, skills..."
                   className="flex-1 bg-transparent text-text-primary placeholder-text-muted/60 outline-none text-sm"
                 />
                 <kbd className="hidden sm:inline-block px-2 py-0.5 text-[10px] text-text-muted bg-white/5 rounded border border-white/10">
@@ -144,7 +141,7 @@ const CommandPalette = () => {
               <div ref={listRef} className="max-h-64 overflow-y-auto py-2">
                 {filtered.length === 0 ? (
                   <div className="px-4 py-8 text-center text-text-muted text-sm">
-                    {t("cmd.noResults")}
+                    No results found
                   </div>
                 ) : (
                   filtered.map((cmd, idx) => (

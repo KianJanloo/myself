@@ -15,8 +15,6 @@ export const skills = [
   { name: "Material UI", rate: 88, category: "frontend" },
   { name: "Atomic Design", rate: 80, category: "frontend" },
   { name: "Storybook", rate: 75, category: "frontend" },
-  { name: "i18n", rate: 78, category: "frontend" },
-
   // Backend Technologies
   { name: "Node.js", rate: 90, category: "backend" },
   { name: "Express", rate: 88, category: "backend" },

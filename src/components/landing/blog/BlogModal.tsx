@@ -1,8 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { FaTimes, FaCalendar, FaClock, FaTag } from "react-icons/fa"
 import type { BlogPost } from "@/utils/service/blog/blog"
-import { useLanguage } from "@/i18n/LanguageContext"
-
 interface BlogModalProps {
   post: BlogPost | null
   isOpen: boolean
@@ -10,7 +8,6 @@ interface BlogModalProps {
 }
 
 const BlogModal = ({ post, isOpen, onClose }: BlogModalProps) => {
-  const { t } = useLanguage()
 
   return (
     <AnimatePresence>
@@ -48,14 +45,14 @@ const BlogModal = ({ post, isOpen, onClose }: BlogModalProps) => {
                     </span>
                     <span className="flex items-center gap-1">
                       <FaClock className="w-3 h-3" />
-                      {post.readTime} {t("blog.readTime")}
+                      {post.readTime} min read
                     </span>
                   </div>
                 </div>
                 <button
                   onClick={onClose}
                   className="ml-4 p-2 rounded-xl hover:bg-white/10 transition-colors text-text-muted hover:text-text-primary cursor-pointer"
-                  aria-label={t("blog.close")}
+                  aria-label="Close"
                 >
                   <FaTimes className="w-5 h-5" />
                 </button>

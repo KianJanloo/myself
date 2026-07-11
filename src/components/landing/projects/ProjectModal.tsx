@@ -8,8 +8,6 @@ import {
   FaTag,
   FaRocket,
 } from "react-icons/fa";
-import { useLanguage } from "@/i18n/LanguageContext";
-
 interface ProjectModalProps {
   project: {
     title: string;
@@ -29,7 +27,6 @@ interface ProjectModalProps {
 
 const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
   const [showDemo, setShowDemo] = useState(false);
-  const { t } = useLanguage();
 
   if (!project) return null;
 
@@ -112,7 +109,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-xl border-2 border-dashed border-accent/30 text-accent hover:bg-accent/5 hover:border-accent/50 transition-all duration-300 cursor-pointer"
                     >
                       <FaRocket className="w-5 h-5" />
-                      <span className="font-medium">{t("projects.liveDemo")}</span>
+                      <span className="font-medium">Live Demo</span>
                     </button>
                   )}
                 </div>
@@ -166,7 +163,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-accent to-accent-secondary text-white rounded-full hover:shadow-lg transition-all duration-300"
                   >
                     <FaExternalLinkAlt className="w-4 h-4" />
-                    <span>{t("projects.viewProject")}</span>
+                    <span>View Project</span>
                   </a>
                 )}
                 {project.github && (
@@ -177,7 +174,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                     className="flex items-center gap-2 px-6 py-3 border border-accent text-accent rounded-full hover:bg-accent hover:text-white transition-all duration-300"
                   >
                     <FaGithub className="w-4 h-4" />
-                    <span>{t("projects.viewCode")}</span>
+                    <span>View Code</span>
                   </a>
                 )}
               </div>

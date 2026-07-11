@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { FaEye } from "react-icons/fa"
-import { useLanguage } from "@/i18n/LanguageContext"
 
 const VisitorCounter = () => {
   const [count, setCount] = useState(0)
-  const { t } = useLanguage()
 
   useEffect(() => {
     const key = "portfolio-visits"
@@ -25,7 +23,7 @@ const VisitorCounter = () => {
     >
       <FaEye className="w-3 h-3 text-accent" />
       <span>
-        {t("footer.visitor")} #{count.toLocaleString()}
+        Visitor #{count.toLocaleString()}
       </span>
     </motion.div>
   )

@@ -1,16 +1,13 @@
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 import ContactForm from './ContactForm'
 import { motion } from 'framer-motion'
-import { useLanguage } from '@/i18n/LanguageContext'
-
 const Contact = () => {
-  const { t } = useLanguage()
 
   const socialLinks = [
     {
       icon: <FaLinkedin />,
-      title: t("social.linkedin"),
-      description: t("social.linkedinDesc"),
+      title: "LinkedIn",
+      description: "Connect professionally",
       link: "https://www.linkedin.com/in/kian-janloo-6b7473344/",
       color: "from-blue-500/20 to-blue-600/20",
       hoverColor: "group-hover:from-blue-500/30 group-hover:to-blue-600/30",
@@ -18,8 +15,8 @@ const Contact = () => {
     },
     {
       icon: <FaGithub />,
-      title: t("social.github"),
-      description: t("social.githubDesc"),
+      title: "GitHub",
+      description: "View my code",
       link: "https://github.com/KianJanloo",
       color: "from-gray-500/20 to-gray-600/20",
       hoverColor: "group-hover:from-gray-500/30 group-hover:to-gray-600/30",
@@ -27,8 +24,8 @@ const Contact = () => {
     },
     {
       icon: <FaEnvelope />,
-      title: t("social.email"),
-      description: t("social.emailDesc"),
+      title: "Email",
+      description: "Send a message",
       link: "mailto:KianJanloo10@gmail.com",
       color: "from-accent/20 to-accent-secondary/20",
       hoverColor: "group-hover:from-accent/30 group-hover:to-accent-secondary/30",

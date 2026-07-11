@@ -2,8 +2,6 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaPaperPlane, FaCheck, FaExclamationTriangle, FaEnvelope, FaUser, FaTag, FaComment } from 'react-icons/fa'
 import { sendEmail, createEmailLink } from '../../../utils/service/emailService'
-import { useLanguage } from '@/i18n/LanguageContext'
-
 interface FormData {
   name: string
   email: string
@@ -19,7 +17,6 @@ interface FormErrors {
 }
 
 const ContactForm = () => {
-  const { t } = useLanguage()
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -34,23 +31,23 @@ const ContactForm = () => {
     const newErrors: FormErrors = {}
 
     if (!formData.name.trim()) {
-      newErrors.name = t('contact.nameRequired')
+      newErrors.name = 'Name is required'
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = t('contact.emailRequired')
+      newErrors.email = 'Email is required'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = t('contact.emailInvalid')
+      newErrors.email = 'Please enter a valid email'
     }
 
     if (!formData.subject.trim()) {
-      newErrors.subject = t('contact.subjectRequired')
+      newErrors.subject = 'Subject is required'
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = t('contact.messageRequired')
+      newErrors.message = 'Message is required'
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = t('contact.messageMinLength')
+      newErrors.message = 'Message must be at least 10 characters'
     }
 
     setErrors(newErrors)
@@ -117,10 +114,10 @@ const ContactForm = () => {
             </div>
             <div>
               <h3 className="text-xl font-bold text-text-primary">
-                {t('contact.sendMessage')}
+                Send a Message
               </h3>
               <p className="text-sm text-text-muted">
-                {t('contact.backToYou')}
+                I'll get back to you within 24 hours
               </p>
             </div>
           </div>
@@ -130,7 +127,7 @@ const ContactForm = () => {
               <div className="space-y-2">
                 <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium text-text-primary">
                   <FaUser className="w-3.5 h-3.5 text-accent" />
-                  {t('contact.name')} *
+                  Name *
                 </label>
                 <div className="relative">
                   <input
@@ -144,7 +141,7 @@ const ContactForm = () => {
                         ? 'border-red-500/50 focus:border-red-500' 
                         : 'border-white/10 focus:border-accent/50 hover:border-white/20'
                     } text-text-primary placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:bg-white/8`}
-                    placeholder={t('contact.namePlaceholder')}
+                    placeholder="John Doe"
                   />
                   {errors.name && (
                     <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1.5">
@@ -158,7 +155,7 @@ const ContactForm = () => {
               <div className="space-y-2">
                 <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium text-text-primary">
                   <FaEnvelope className="w-3.5 h-3.5 text-accent" />
-                  {t('contact.email')} *
+                  Email *
                 </label>
                 <div className="relative">
                   <input
@@ -172,7 +169,7 @@ const ContactForm = () => {
                         ? 'border-red-500/50 focus:border-red-500' 
                         : 'border-white/10 focus:border-accent/50 hover:border-white/20'
                     } text-text-primary placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:bg-white/8`}
-                    placeholder={t('contact.emailPlaceholder')}
+                    placeholder="john@example.com"
                   />
                   {errors.email && (
                     <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1.5">
@@ -187,7 +184,7 @@ const ContactForm = () => {
             <div className="space-y-2">
               <label htmlFor="subject" className="flex items-center gap-2 text-sm font-medium text-text-primary">
                 <FaTag className="w-3.5 h-3.5 text-accent" />
-                {t('contact.subject')} *
+                Subject *
               </label>
               <div className="relative">
                 <input
@@ -201,7 +198,7 @@ const ContactForm = () => {
                       ? 'border-red-500/50 focus:border-red-500' 
                       : 'border-white/10 focus:border-accent/50 hover:border-white/20'
                   } text-text-primary placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:bg-white/8`}
-                  placeholder={t('contact.subjectPlaceholder')}
+                  placeholder="Project Inquiry"
                 />
                 {errors.subject && (
                   <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1.5">
@@ -215,7 +212,7 @@ const ContactForm = () => {
             <div className="space-y-2">
               <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium text-text-primary">
                 <FaComment className="w-3.5 h-3.5 text-accent" />
-                {t('contact.message')} *
+                Message *
               </label>
               <div className="relative">
                 <textarea
@@ -229,7 +226,7 @@ const ContactForm = () => {
                       ? 'border-red-500/50 focus:border-red-500' 
                       : 'border-white/10 focus:border-accent/50 hover:border-white/20'
                   } text-text-primary placeholder-text-muted/60 focus:outline-none focus:ring-2 focus:ring-accent/20 focus:bg-white/8`}
-                  placeholder={t('contact.messagePlaceholder')}
+                  placeholder="Tell me about your project or just say hello!"
                 />
                 {errors.message && (
                   <p className="text-red-400 text-xs mt-1.5 flex items-center gap-1.5">
@@ -250,17 +247,17 @@ const ContactForm = () => {
               {isSubmitting ? (
                 <>
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  {t('contact.sending')}
+                  Sending...
                 </>
               ) : submitStatus === 'success' ? (
                 <>
                   <FaCheck className="w-5 h-5" />
-                  {t('contact.sent')}
+                  Message Sent!
                 </>
               ) : (
                 <>
                   <FaPaperPlane className="w-5 h-5" />
-                  {t('contact.send')}
+                  Send Message
                 </>
               )}
             </motion.button>
@@ -272,7 +269,7 @@ const ContactForm = () => {
                 className="text-center text-green-400 text-sm flex items-center justify-center gap-2"
               >
                 <FaCheck className="w-4 h-4" />
-                {t('contact.thanks')}
+                Thank you! I'll get back to you soon.
               </motion.div>
             )}
 
@@ -283,7 +280,7 @@ const ContactForm = () => {
                 className="text-center space-y-3"
               >
                 <p className="text-red-400 text-sm">
-                  {t('contact.unableToSend')}
+                  Unable to send email automatically.
                 </p>
                 <button
                   type="button"
@@ -291,7 +288,7 @@ const ContactForm = () => {
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-accent/10 text-accent rounded-xl hover:bg-accent/20 border border-accent/20 transition-all duration-300 text-sm font-medium cursor-pointer"
                 >
                   <FaEnvelope className="w-4 h-4" />
-                  {t('contact.openEmail')}
+                  Open Email Client
                 </button>
               </motion.div>
             )}

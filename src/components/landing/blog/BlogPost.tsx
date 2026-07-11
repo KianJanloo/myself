@@ -1,8 +1,6 @@
 import { motion } from "framer-motion"
 import { FaCalendar, FaClock, FaTag, FaArrowRight } from "react-icons/fa"
 import type { BlogPost as BlogPostType } from "@/utils/service/blog/blog"
-import { useLanguage } from "@/i18n/LanguageContext"
-
 interface BlogPostCardProps {
   post: BlogPostType
   index: number
@@ -10,7 +8,6 @@ interface BlogPostCardProps {
 }
 
 const BlogPostCard = ({ post, index, onClick }: BlogPostCardProps) => {
-  const { t } = useLanguage()
 
   return (
     <motion.article
@@ -61,11 +58,11 @@ const BlogPostCard = ({ post, index, onClick }: BlogPostCardProps) => {
             </span>
             <span className="flex items-center gap-1">
               <FaClock className="w-3 h-3" />
-              {post.readTime} {t("blog.readTime")}
+              {post.readTime} min read
             </span>
           </div>
           <span className="flex items-center gap-1 text-xs text-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            {t("blog.readMore")}
+            Read More
             <FaArrowRight className="w-3 h-3" />
           </span>
         </div>

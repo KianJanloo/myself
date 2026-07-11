@@ -4,12 +4,9 @@ import SkillsFilter from "./SkillsFilter"
 import RadarChart from "./RadarChart"
 import { skills } from "../../../utils/service/skills/skills"
 import { motion, AnimatePresence } from "framer-motion"
-import { useLanguage } from "@/i18n/LanguageContext"
-
 const Skills = () => {
   const [filter, setFilter] = useState("all")
   const [viewMode, setViewMode] = useState<"grid" | "radar">("grid")
-  const { t } = useLanguage()
 
   const filteredSkills =
     filter === "all"
@@ -42,7 +39,7 @@ const Skills = () => {
                 : "text-text-muted hover:text-accent border border-white/10"
             }`}
           >
-            {t("skills.gridView")}
+            Grid View
           </button>
           <button
             onClick={() => setViewMode("radar")}
@@ -52,7 +49,7 @@ const Skills = () => {
                 : "text-text-muted hover:text-accent border border-white/10"
             }`}
           >
-            {t("skills.radarView")}
+            Radar View
           </button>
         </div>
       </div>
