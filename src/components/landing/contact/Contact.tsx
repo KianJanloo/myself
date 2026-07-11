@@ -8,7 +8,7 @@ const Contact = () => {
       icon: <FaLinkedin />,
       title: "LinkedIn",
       description: "Connect professionally",
-      link: "https://www.linkedin.com/in/kian-janloo-6b7473344/",
+      link: "https://www.linkedin.com/in/kian-janloo/",
       color: "from-blue-500/20 to-blue-600/20",
       hoverColor: "group-hover:from-blue-500/30 group-hover:to-blue-600/30",
       iconColor: "text-blue-400 group-hover:text-blue-300"
