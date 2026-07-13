@@ -1,5 +1,12 @@
 export const projects = [
     {
+        title: "redlimit (package)",
+        date: "07/2026",
+        github: "https://github.com/KianJanloo/redlimit",
+        type: "NodeJs",
+        company: "Kian Janloo",
+    },
+    {
         title: "Velonix",
         date: "06/2026",
         link: "https://velonixweb-production.up.railway.app/",
