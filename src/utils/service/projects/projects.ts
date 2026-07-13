@@ -1,5 +1,12 @@
 export const projects = [
     {
+        title: "selfog",
+        date: "07/2026",
+        github: "https://github.com/KianJanloo/selfog",
+        type: "Express, NextJs",
+        company: "Kian Janloo",
+    },
+    {
         title: "redlimit (package)",
         date: "07/2026",
         github: "https://github.com/KianJanloo/redlimit",
