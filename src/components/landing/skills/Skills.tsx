@@ -17,8 +17,8 @@ const Skills = () => {
     const categoryRates: Record<string, { sum: number; count: number }> = {}
     skills.forEach((s) => {
       if (!categoryRates[s.category]) categoryRates[s.category] = { sum: 0, count: 0 }
-      categoryRates[s.category].sum += s.rate
-      categoryRates[s.category].count += 1
+      categoryRates[s.category]!.sum += s.rate
+      categoryRates[s.category]!.count += 1
     })
     return Object.entries(categoryRates).map(([name, { sum, count }]) => ({
       name: name.charAt(0).toUpperCase() + name.slice(1),
