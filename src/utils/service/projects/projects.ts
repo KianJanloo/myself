@@ -9,8 +9,6 @@ export const projects = [
     {
         title: "Velonix",
         date: "06/2026",
-        link: "https://velonixweb-production.up.railway.app/",
-        demoUrl: "https://velonixweb-production.up.railway.app/",
         type: "turbo-repo (NextJs, NestJs)",
         company: "Velonix",
     },
@@ -53,6 +51,8 @@ export const projects = [
     {
         title: "Todo List",
         date: "08/2025",
+        link: "https://todo-kian.netlify.app/",
+        demoUrl: "https://todo-kian.netlify.app/",
         github: "https://github.com/KianJanloo/todo",
         type: "NextJs",
         company: "Kian Janloo",
@@ -61,6 +61,8 @@ export const projects = [
         title: "Time Craft",
         date: "09/2025",
         github: "https://github.com/KianJanloo/time-craft",
+        link: "https://time-craft-kian.netlify.app/",
+        demoUrl: "https://time-craft-kian.netlify.app/",
         type: "NextJs",
         company: "Sahar SMS",
     },
