@@ -107,7 +107,7 @@ const ContactForm = () => {
         {/* Glow effect */}
         <div className="absolute -inset-1 bg-gradient-to-r from-accent/10 via-accent-secondary/10 to-accent/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
-        <div className="relative glass rounded-3xl p-8 md:p-10 border border-white/10 group-hover:border-accent/20 transition-all duration-500">
+        <div className="relative glass rounded-3xl p-5 sm:p-8 md:p-10 border border-white/10 group-hover:border-accent/20 transition-all duration-500">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-3 bg-gradient-to-br from-accent/20 to-accent-secondary/20 rounded-2xl">
               <FaEnvelope className="w-5 h-5 text-accent" />

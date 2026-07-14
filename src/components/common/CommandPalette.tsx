@@ -119,7 +119,7 @@ const CommandPalette = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -20 }}
             transition={{ duration: 0.15 }}
-            className="fixed top-[15%] left-1/2 -translate-x-1/2 z-[101] w-full max-w-lg"
+            className="fixed top-[10%] sm:top-[15%] left-1/2 -translate-x-1/2 z-[101] w-[calc(100%-2rem)] max-w-lg"
           >
             <div className="glass rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
               <div className="flex items-center gap-3 px-4 py-3 border-b border-white/10">

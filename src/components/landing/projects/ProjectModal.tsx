@@ -47,10 +47,10 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
             exit={{ scale: 0.8, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-8">
+            <div className="p-4 sm:p-8">
               <div className="flex justify-between items-start mb-6">
                 <div>
-                  <h2 className="text-3xl font-bold text-text-primary mb-2 gradient-text">
+                  <h2 className="text-xl sm:text-3xl font-bold text-text-primary mb-2 gradient-text">
                     {project.title}
                   </h2>
                   {project.company && (
