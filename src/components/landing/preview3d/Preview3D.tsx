@@ -64,11 +64,11 @@ const Preview3D = () => {
           animate={{ rotateX: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
         >
-          <FlipText className="font-bold text-5xl md:text-6xl tracking-tight gradient-text mb-4">
+          <FlipText className="font-bold text-3xl sm:text-4xl md:text-6xl tracking-tight gradient-text mb-2 sm:mb-4">
             My Roadmap
           </FlipText>
         </motion.div>
-        <p className="text-xl text-text-muted max-w-2xl mx-auto">
+        <p className="text-xs sm:text-xl text-text-muted max-w-2xl mx-auto">
           A journey through my career milestones and projects
         </p>
 
@@ -92,8 +92,8 @@ const Preview3D = () => {
 
       {/* Timeline */}
       <div className="relative max-w-5xl mx-auto px-4">
-        {/* Vertical line — desktop center, mobile left */}
-        <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent" />
+        {/* Vertical line — hidden on mobile, centered on desktop */}
+        <div className="hidden md:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-accent/40 to-transparent" />
 
         {/* Timeline items */}
         <div className="space-y-16">

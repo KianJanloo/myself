@@ -25,10 +25,10 @@ const ExperienceCard: React.FC<ExperienceCardProps> = memo(({ company, role, per
         gradientColor="rgba(99, 102, 241, 0.1)" 
         className="h-full border border-card-border rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-accent/10 transition-all duration-500 group-hover:scale-105"
       >
-        <BlurFade inView className="h-full flex flex-col p-6">
+        <BlurFade inView className="h-full flex flex-col p-4 sm:p-6">
           <div className="flex-1">
             <div className="flex max-md:flex-col gap-4 items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
+              <h3 className="text-lg sm:text-2xl font-bold text-text-primary group-hover:gradient-text transition-all duration-300">
                 {role}
               </h3>
               <span className="text-sm text-accent bg-accent/10 whitespace-nowrap px-3 py-1 rounded-full font-medium flex items-center gap-1">
@@ -37,7 +37,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = memo(({ company, role, per
               </span>
             </div>
 
-            <div className="text-xl font-semibold text-accent mb-3 group-hover:text-accent-secondary transition-colors duration-300">
+            <div className="text-base sm:text-xl font-semibold text-accent mb-3 group-hover:text-accent-secondary transition-colors duration-300">
               {company}
             </div>
 

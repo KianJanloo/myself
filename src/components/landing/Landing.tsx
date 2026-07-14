@@ -92,14 +92,14 @@ const Landing = () => {
           role="navigation"
           aria-label="Main navigation"
         >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-4">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center py-3 sm:py-4">
               <motion.a
                 href="#summary"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl font-bold gradient-text hover:opacity-80 transition-opacity cursor-pointer"
+                className="text-xl sm:text-2xl font-bold gradient-text hover:opacity-80 transition-opacity cursor-pointer"
                 aria-label="Go to top"
               >
                 Kian Janloo
@@ -241,7 +241,7 @@ const Landing = () => {
 
                 <section
                   id="skills"
-                  className="py-20"
+                  className="py-8 sm:py-16 md:py-20"
                   aria-label="Skills"
                 >
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -250,12 +250,12 @@ const Landing = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                       viewport={{ once: true }}
-                      className="text-center mb-16"
+                      className="text-center mb-6 sm:mb-10 md:mb-16"
                     >
-                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                      <FlipText className="font-bold text-2xl sm:text-3xl md:text-5xl tracking-tight gradient-text mb-2 sm:mb-4">
                         Skills
                       </FlipText>
-                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                      <p className="text-xs sm:text-lg md:text-xl text-text-muted max-w-2xl mx-auto">
                         Technologies and tools I work with
                       </p>
                     </motion.header>
@@ -265,7 +265,7 @@ const Landing = () => {
 
                 <section
                   id="experiences"
-                  className="py-20"
+                  className="py-8 sm:py-16 md:py-20"
                   aria-label="Work Experience"
                 >
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -274,12 +274,12 @@ const Landing = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                       viewport={{ once: true }}
-                      className="text-center mb-16"
+                      className="text-center mb-6 sm:mb-10 md:mb-16"
                     >
-                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                      <FlipText className="font-bold text-2xl sm:text-3xl md:text-5xl tracking-tight gradient-text mb-2 sm:mb-4">
                         Experience
                       </FlipText>
-                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                      <p className="text-xs sm:text-lg md:text-xl text-text-muted max-w-2xl mx-auto">
                         My professional journey and the companies I've had the privilege to work with
                       </p>
                     </motion.header>
@@ -289,7 +289,7 @@ const Landing = () => {
 
                 <section
                   id="projects"
-                  className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
+                  className="py-12 sm:py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
                   aria-label="Projects Portfolio"
                 >
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -298,12 +298,12 @@ const Landing = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                       viewport={{ once: true }}
-                      className="text-center mb-16"
+                      className="text-center mb-6 sm:mb-10 md:mb-16"
                     >
-                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                      <FlipText className="font-bold text-2xl sm:text-3xl md:text-5xl tracking-tight gradient-text mb-2 sm:mb-4">
                         Projects
                       </FlipText>
-                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                      <p className="text-xs sm:text-lg md:text-xl text-text-muted max-w-2xl mx-auto">
                         A showcase of my recent work and personal projects
                       </p>
                     </motion.header>
@@ -313,7 +313,7 @@ const Landing = () => {
 
                 <section
                   id="contact"
-                  className="py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
+                  className="py-12 sm:py-20 bg-gradient-to-r from-transparent via-secondary/30 to-transparent"
                   aria-label="Contact Information"
                 >
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -322,12 +322,12 @@ const Landing = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.6 }}
                       viewport={{ once: true }}
-                      className="text-center mb-16"
+                      className="text-center mb-6 sm:mb-10 md:mb-16"
                     >
-                      <FlipText className="font-bold text-5xl tracking-tight gradient-text mb-4">
+                      <FlipText className="font-bold text-2xl sm:text-3xl md:text-5xl tracking-tight gradient-text mb-2 sm:mb-4">
                         Contact
                       </FlipText>
-                      <p className="text-xl text-text-muted max-w-2xl mx-auto">
+                      <p className="text-xs sm:text-lg md:text-xl text-text-muted max-w-2xl mx-auto">
                         Let's connect and discuss how we can work together
                       </p>
                     </motion.header>

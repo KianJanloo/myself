@@ -36,11 +36,11 @@ const RoadmapCard3D = ({ title, subtitle, date, tags, description, side, index, 
         delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
-      className="shrink-0 w-full md:w-[calc(50%-2rem)] max-md:pl-12 max-md:!transform-none"
+      className="shrink-0 w-full md:w-[calc(50%-2rem)] md:!transform-none"
       style={{ transformStyle: "preserve-3d" }}
     >
       <div
-        className="group relative rounded-2xl border border-white/10 bg-card-bg backdrop-blur-xl p-5 md:p-6 transition-all duration-500 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(212,168,83,0.15)]"
+        className="group relative rounded-2xl border border-white/10 bg-card-bg backdrop-blur-xl p-4 md:p-6 transition-all duration-500 hover:border-accent/30 hover:shadow-[0_0_40px_rgba(212,168,83,0.15)]"
         style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
       >
         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
@@ -95,32 +95,18 @@ const RoadmapCard3D = ({ title, subtitle, date, tags, description, side, index, 
   const spacer = <div className="hidden md:block shrink-0 w-[calc(54%-0rem)]" />
 
   const dot = (
-    <>
-      <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={isInView ? { scale: 1 } : {}}
-          transition={{ delay: index * 0.12 + 0.3, type: "spring", stiffness: 400, damping: 15 }}
-          className={`w-4 h-4 rounded-full border-[3px] ${
-            type === "experience"
-              ? "border-accent bg-accent/20"
-              : "border-blue-400 bg-blue-400/20"
-          } shadow-[0_0_20px_rgba(212,168,83,0.4)]`}
-        />
-      </div>
-      <div className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-20">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={isInView ? { scale: 1 } : {}}
-          transition={{ delay: index * 0.12 + 0.3, type: "spring", stiffness: 400, damping: 15 }}
-          className={`w-3 h-3 rounded-full border-[2px] ${
-            type === "experience"
-              ? "border-accent bg-accent/20"
-              : "border-blue-400 bg-blue-400/20"
-          } shadow-[0_0_12px_rgba(212,168,83,0.4)]`}
-        />
-      </div>
-    </>
+    <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 z-20 items-center justify-center">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1 } : {}}
+        transition={{ delay: index * 0.12 + 0.3, type: "spring", stiffness: 400, damping: 15 }}
+        className={`w-4 h-4 rounded-full border-[3px] ${
+          type === "experience"
+            ? "border-accent bg-accent/20"
+            : "border-blue-400 bg-blue-400/20"
+        } shadow-[0_0_20px_rgba(212,168,83,0.4)]`}
+      />
+    </div>
   )
 
   return (

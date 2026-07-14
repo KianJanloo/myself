@@ -20,7 +20,7 @@ const Summary = () => {
     <section
       id="summary"
       ref={sectionRef}
-      className="min-h-screen flex items-center justify-center py-20 relative overflow-hidden"
+      className="min-h-screen flex items-center justify-center py-12 sm:py-16 md:py-20 relative overflow-hidden"
     >
       <FloatingShapes />
 
@@ -28,7 +28,7 @@ const Summary = () => {
         style={{ y, opacity }}
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 max-md:text-center relative z-10"
       >
-        <div className="flex max-lg:flex-col flex-row-reverse justify-center gap-12 max-lg:gap-16 items-center max-w-6xl mx-auto">
+        <div className="flex max-lg:flex-col flex-row-reverse justify-center gap-4 sm:gap-8 md:gap-16 items-center max-w-6xl mx-auto">
           <BlurFade inView delay={0.2} direction="left">
             <div className="perspective-1000">
               <div
@@ -58,7 +58,7 @@ const Summary = () => {
                   <img
                     src={kian || " "}
                     alt="Kian Janloo - Full Stack Developer"
-                    className="w-72 h-72 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-accent/30 shadow-2xl transition-transform duration-500"
+                    className="w-36 h-36 sm:w-48 sm:h-48 lg:w-80 lg:h-80 rounded-full object-cover border-4 border-accent/30 shadow-2xl transition-transform duration-500"
                     style={{ transform: "translateZ(30px)" }}
                   />
                   <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -74,10 +74,10 @@ const Summary = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 }}
               >
-                <h1 className="text-5xl lg:text-6xl max-md:text-4xl font-bold mb-4">
+                <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4">
                   <span className="gradient-text">Hi, I'm Kian</span>
                   <br />
-                  <span className="text-white whitespace-nowrap">
+                  <span className="text-white">
                     <TypingAnimation
                       strings={titles}
                       speed={70}
@@ -95,18 +95,18 @@ const Summary = () => {
                 transition={{ duration: 0.4, delay: 0.5 }}
                 className="space-y-4"
               >
-                <p className="text-xl text-text-primary font-medium leading-relaxed">
+                <p className="text-sm sm:text-lg md:text-xl text-text-primary font-medium leading-relaxed">
                   A Full-Stack Developer passionate about building modern, responsive, and user-centric web apps with{" "}
                   <span className="gradient-text font-bold">React</span>,{" "}
                   <span className="gradient-text font-bold">Next.js</span> and{" "}
                   <span className="gradient-text font-bold">Node.js</span>.
                 </p>
 
-                <p className="text-lg text-text-muted leading-relaxed">
+                <p className="text-xs sm:text-base md:text-lg text-text-muted leading-relaxed">
                   I focus on performance, accessibility, and pixel-perfect design to deliver products that delight users and drive business growth.
                 </p>
 
-                <p className="text-lg text-text-muted leading-relaxed">
+                <p className="text-xs sm:text-base md:text-lg text-text-muted leading-relaxed">
                   Always eager to learn new technologies, tackle challenging problems, and collaborate with creative teams to turn ideas into reality.
                 </p>
               </motion.div>
@@ -119,13 +119,13 @@ const Summary = () => {
               >
                 <a
                   href="#projects"
-                  className="px-8 py-3 bg-gradient-to-r from-accent to-accent-secondary text-background font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 transform hover:scale-105"
+                  className="px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-accent to-accent-secondary text-background font-semibold rounded-full hover:shadow-lg hover:shadow-accent/25 transition-all duration-300 transform hover:scale-105"
                 >
                   View My Work
                 </a>
                 <a
                   href="#contact"
-                  className="px-8 py-3 border-2 border-accent text-accent font-semibold rounded-full hover:bg-accent hover:text-background transition-all duration-300 transform hover:scale-105"
+                  className="px-6 sm:px-8 py-2.5 sm:py-3 border-2 border-accent text-accent font-semibold rounded-full hover:bg-accent hover:text-background transition-all duration-300 transform hover:scale-105"
                 >
                   Get In Touch
                 </a>

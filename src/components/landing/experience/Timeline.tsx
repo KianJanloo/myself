@@ -4,8 +4,8 @@ import TimelineItem from "./TimelineItem"
 const Timeline = () => {
   return (
     <div className="relative">
-      {/* Vertical line */}
-      <div className="timeline-line" />
+      {/* Vertical line — hidden on mobile */}
+      <div className="timeline-line hidden md:block" />
 
       <div className="space-y-12">
         {experiences.map((experience, idx) => (

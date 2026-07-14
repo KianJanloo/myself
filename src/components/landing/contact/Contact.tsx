@@ -34,7 +34,7 @@ const Contact = () => {
   ]
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-8 sm:space-y-12">
       {/* Social Links - Horizontal Bar */}
       <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
         {socialLinks.map((social, index) => (
@@ -47,7 +47,7 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             viewport={{ once: true }}
-            className={`group relative flex items-center gap-4 px-6 py-4 rounded-2xl bg-gradient-to-br ${social.color} ${social.hoverColor} border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 backdrop-blur-sm`}
+            className={`group relative flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-3 sm:py-4 rounded-2xl bg-gradient-to-br ${social.color} ${social.hoverColor} border border-white/10 hover:border-white/20 transition-all duration-300 hover:shadow-lg hover:shadow-accent/10 backdrop-blur-sm`}
           >
             <div className={`text-2xl ${social.iconColor} transition-colors duration-300`}>
               {social.icon}

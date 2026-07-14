@@ -33,8 +33,8 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="bg-gradient-to-r from-secondary/50 to-background/50 border-t border-white/10 mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <footer className="bg-gradient-to-r from-secondary/50 to-background/50 border-t border-white/10 mt-8 sm:mt-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid md:grid-cols-3 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -109,21 +109,21 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           viewport={{ once: true }}
-          className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
+          className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
         >
-          <div className="flex items-center space-x-2 text-text-muted">
-            <span>© {currentYear} Kian Janloo. Made with</span>
+          <div className="flex items-center gap-2 text-text-muted text-sm">
+            <span>&copy; {currentYear} Kian Janloo. Made with</span>
             <FaHeart className="w-4 h-4 text-red-500 animate-pulse" />
             <span>and</span>
             <FaCode className="w-4 h-4 text-accent" />
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
             <VisitorCounter />
-            <div className="flex items-center space-x-4 text-sm text-text-muted">
+            <div className="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-muted">
               <span>Built with React & TypeScript</span>
-              <span>•</span>
-              <span>Deployed on Vercel</span>
+              <span className="hidden sm:inline">&bull;</span>
+              <span className="hidden sm:inline">Deployed on Vercel</span>
             </div>
           </div>
         </motion.div>
