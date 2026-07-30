@@ -33,8 +33,6 @@ export const projects = [
     {
         title: "Delta Real Estate Web Site",
         date: "07/2025",
-        link: "https://delta-realestate.vercel.app/fa",
-        demoUrl: "https://delta-realestate.vercel.app/fa",
         github: "https://github.com/KianJanloo/Delta",
         type: "NextJs",
         company: "Apanco",
@@ -93,7 +91,6 @@ export const projects = [
     {
         title: "Rumma Real State ( Back End )",
         date: "10/2025",
-        link: "https://bama98.liara.run/",
         github: "https://github.com/KianJanloo/rumma-backend",
         type: "NestJs",
         company: "Rumma Real State",
