@@ -16,6 +16,8 @@ export const projects = [
     {
         title: "Velonix",
         date: "06/2026",
+        link: "https://velonix-alpha.vercel.app/",
+        demoUrl: "https://velonix-alpha.vercel.app/",
         type: "turbo-repo (NextJs, NestJs)",
         company: "Velonix",
     },
