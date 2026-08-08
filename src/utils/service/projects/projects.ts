@@ -1,5 +1,13 @@
 export const projects = [
     {
+        title: "Lumen",
+        date: "08/2026",
+        github: "https://github.com/KianJanloo/Lumen",
+        link: "https://lumen-web-orcin.vercel.app",
+        type: "turbo-repo (NextJs, NestJs)",
+        company: "Kian Janloo",
+    },
+    {
         title: "selfog",
         date: "07/2026",
         github: "https://github.com/KianJanloo/selfog",
