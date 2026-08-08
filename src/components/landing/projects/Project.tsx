@@ -80,7 +80,25 @@ const Project: FC<IProject> = memo(
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/20 via-transparent to-accent-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Main card content */}
-              <div className="relative h-full bg-card-bg/80 backdrop-blur-sm rounded-2xl border border-card-border group-hover:border-accent/30 transition-all duration-500 p-6 flex flex-col">
+              <div className="relative h-full bg-card-bg/80 backdrop-blur-sm rounded-2xl border border-card-border group-hover:border-accent/30 transition-all duration-500 flex flex-col">
+                {/* Project preview image */}
+                <div className="relative aspect-video w-full overflow-hidden bg-secondary/30">
+                  {image ? (
+                    <img
+                      src={image}
+                      alt={`${title} preview`}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <FaChartPie className="w-8 h-8 text-text-muted/20" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/10 to-transparent" />
+                </div>
+
+                <div className="p-6 flex flex-col flex-1">
                 {/* Header with decorative elements */}
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
@@ -167,6 +185,7 @@ const Project: FC<IProject> = memo(
                       <FaExternalLinkAlt className="w-3 h-3" />
                     </button>
                   </div>
+                </div>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 export const projects = [
     {
         title: "Lumen",
+        image: "/projects/lumen.png",
         date: "08/2026",
         github: "https://github.com/KianJanloo/Lumen",
         link: "https://lumen-web-orcin.vercel.app",
@@ -23,6 +24,7 @@ export const projects = [
     },
     {
         title: "Velonix",
+        image: "/projects/velonix.png",
         date: "06/2026",
         link: "https://velonix-alpha.vercel.app/",
         demoUrl: "https://velonix-alpha.vercel.app/",
@@ -31,6 +33,7 @@ export const projects = [
     },
     {
         title: "Rumma Real State",
+        image: "/projects/rumma-real-state.png",
         date: "10/2025",
         link: "https://rumma-front-end.vercel.app/",
         demoUrl: "https://rumma-front-end.vercel.app/",
@@ -40,6 +43,7 @@ export const projects = [
     },
     {
         title: "Delta Real Estate",
+        image: "/projects/delta-real-estate.png",
         date: "07/2025",
         github: "https://github.com/KianJanloo/Delta",
         type: "NextJs",
@@ -47,6 +51,7 @@ export const projects = [
     },
     {
         title: "Call Of Duty",
+        image: "/projects/call-of-duty.png",
         date: "11/2025",
         link: "https://call-of-duty-gamma.vercel.app",
         demoUrl: "https://call-of-duty-gamma.vercel.app",
@@ -56,6 +61,7 @@ export const projects = [
     },
     {
         title: "Burger Cafe",
+        image: "/projects/burger-cafe.png",
         date: "08/2025",
         link: "https://burger-cafee.netlify.app",
         demoUrl: "https://burger-cafee.netlify.app",
@@ -65,6 +71,7 @@ export const projects = [
     },
     {
         title: "Todo List",
+        image: "/projects/todo-list.png",
         date: "08/2025",
         link: "https://todo-kian.netlify.app/",
         demoUrl: "https://todo-kian.netlify.app/",
@@ -74,6 +81,7 @@ export const projects = [
     },
     {
         title: "Time Craft",
+        image: "/projects/time-craft.png",
         date: "09/2025",
         github: "https://github.com/KianJanloo/time-craft",
         link: "https://time-craft-kian.netlify.app/",
