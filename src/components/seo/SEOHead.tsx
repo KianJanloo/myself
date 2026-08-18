@@ -53,7 +53,7 @@ const SEOHead = ({
           "url": url,
           "image": `${url}${image}`,
           "sameAs": [
-            "https://www.linkedin.com/in/kian-janloo/",
+            "https://www.linkedin.com/in/kian-junloo/",
             "https://github.com/KianJanloo"
           ],
           "knowsAbout": [
