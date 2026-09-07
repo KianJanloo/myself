@@ -42,6 +42,7 @@ import {
   SiPrettier,
   SiFigma,
   SiMaterialdesign,
+  SiFastapi
 } from "react-icons/si"
 import {
   FaLanguage,
@@ -113,6 +114,7 @@ export const SKILL_ICONS: Record<string, IconType> = {
   Prettier: SiPrettier,
   Figma: SiFigma,
   "Material UI": SiMaterialdesign,
+  FastAPI: SiFastapi,
 }
 
 export function getSkillIcon(name: string, category: string): IconType {

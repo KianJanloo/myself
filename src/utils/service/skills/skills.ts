@@ -29,6 +29,7 @@ export const skills = [
   { name: "GraphQL", rate: 75, category: "backend" },
   { name: "tRPC", rate: 78, category: "backend" },
   { name: "WebSockets", rate: 80, category: "backend" },
+  { name: "FastAPI", rate: 50, category: "backend" },
 
   // Databases & ORMs
   { name: "PostgreSQL", rate: 88, category: "databases" },
