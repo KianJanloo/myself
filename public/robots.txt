@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kian-janloo.vercel.app/sitemap.xml

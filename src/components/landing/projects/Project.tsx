@@ -1,22 +1,12 @@
-import { useState, memo, useCallback, useRef } from "react";
-import ProjectModal from "./ProjectModal";
-import type { FC } from "react";
-import { FaChartPie, FaGithub, FaExternalLinkAlt, FaRocket } from "react-icons/fa";
-import { motion } from "framer-motion";
+import { useState, memo, useCallback, useRef } from "react"
+import ProjectModal from "./ProjectModal"
+import type { FC } from "react"
+import { FaGithub, FaExternalLinkAlt, FaRocket, FaCode, FaStar } from "react-icons/fa"
+import LazyImage from "@/components/common/LazyImage"
+import Reveal from "@/components/ui/Reveal"
+import type { Project } from "@/utils/service/projects/projects"
 
-interface IProject {
-  title: string;
-  date: string;
-  link?: string;
-  github?: string;
-  type?: string;
-  description?: string;
-  technologies?: string[];
-  image?: string;
-  company?: string;
-}
-
-const Project: FC<IProject> = memo(
+const ProjectCard: FC<Project> = memo(
   ({
     date,
     github,
@@ -27,191 +17,146 @@ const Project: FC<IProject> = memo(
     technologies,
     image,
     company,
+    demoUrl,
+    isOpenSource,
+    featured,
   }) => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const cardRef = useRef<HTMLDivElement>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const cardRef = useRef<HTMLDivElement>(null)
 
-    const handleOpenModal = useCallback(() => {
-      setIsModalOpen(true);
-    }, []);
-
-    const handleCloseModal = useCallback(() => {
-      setIsModalOpen(false);
-    }, []);
+    const handleOpenModal = useCallback(() => setIsModalOpen(true), [])
+    const handleCloseModal = useCallback(() => setIsModalOpen(false), [])
 
     const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-      const el = cardRef.current;
-      if (!el) return;
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      const rotateX = ((y - centerY) / centerY) * -5;
-      const rotateY = ((x - centerX) / centerX) * 5;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
-    }, []);
+      const el = cardRef.current
+      if (!el) return
+      const rect = el.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      const rotateX = ((y - rect.height / 2) / (rect.height / 2)) * -5
+      const rotateY = ((x - rect.width / 2) / (rect.width / 2)) * 5
+      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+    }, [])
 
     const handleMouseLeave = useCallback(() => {
-      const el = cardRef.current;
-      if (!el) return;
-      el.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px)";
-    }, []);
+      const el = cardRef.current
+      if (el) el.style.transform = ""
+    }, [])
 
     return (
       <>
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="group perspective-2000"
-        >
-          <div
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ transition: "transform 0.3s ease-out", transformStyle: "preserve-3d" }}
-            className="h-full"
-          >
-            {/* Card with gradient border */}
-            <div className="relative h-full rounded-2xl overflow-hidden">
-              {/* Animated gradient border */}
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/20 via-transparent to-accent-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-              {/* Main card content */}
-              <div className="relative h-full bg-card-bg/80 backdrop-blur-sm rounded-2xl border border-card-border group-hover:border-accent/30 transition-all duration-500 flex flex-col">
-                {/* Project preview image */}
-                <div className="relative aspect-video w-full overflow-hidden bg-secondary/30">
-                  {image ? (
-                    <img
-                      src={image}
-                      alt={`${title} preview`}
-                      loading="lazy"
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <FaChartPie className="w-8 h-8 text-text-muted/20" />
-                    </div>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-card-bg/10 to-transparent" />
-                </div>
-
-                <div className="p-6 flex flex-col flex-1">
-                {/* Header with decorative elements */}
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                      {type && (
-                        <span className="text-xs font-mono text-accent/70 uppercase tracking-wider">
-                          {type}
-                        </span>
-                      )}
-                    </div>
-                    <h3 className="text-xl font-bold text-text-primary group-hover:text-accent transition-colors duration-300">
-                      {title}
-                    </h3>
-                    {company && (
-                      <p className="text-sm text-text-muted mt-1">{company}</p>
+        <Reveal>
+          <div className={`group ${isOpenSource ? "ring-1 ring-accent/30 rounded-2xl" : ""}`}>
+            <div
+              ref={cardRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ transition: "transform 0.3s ease-out" }}
+              className="h-full"
+            >
+              <div className="relative h-full rounded-2xl overflow-hidden project-card-glow">
+                <div className="relative h-full rounded-2xl border border-card-border group-hover:border-accent/30 transition-colors flex flex-col glass-perf">
+                  <div className="relative aspect-video w-full overflow-hidden bg-secondary/30">
+                    {image ? (
+                      <LazyImage src={image} alt={`${title} preview`} className="w-full h-full" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <FaCode className="w-8 h-8 text-text-muted/20" />
+                      </div>
                     )}
-                  </div>
-                  <span className="text-xs text-text-muted bg-secondary/50 px-3 py-1 rounded-full font-mono">
-                    {date}
-                  </span>
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-card-bg via-transparent to-transparent pointer-events-none" />
 
-                {/* Tech stack badges */}
-                {technologies && technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {technologies.slice(0, 4).map((tech) => (
-                      <span
-                        key={tech}
-                        className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {technologies.length > 4 && (
-                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-text-muted">
-                        +{technologies.length - 4}
-                      </span>
-                    )}
-                  </div>
-                )}
-
-                {/* Links section */}
-                <div className="mt-auto space-y-2">
-                  <div className="flex items-center gap-4 text-sm">
-                    {link && (
-                      <a
-                        href={link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-accent hover:text-gold-light transition-colors duration-300 font-medium"
-                      >
-                        <FaRocket className="w-3.5 h-3.5" />
-                        <span>Live Demo</span>
-                      </a>
-                    )}
-                    {github && (
-                      <a
-                        href={github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 text-text-muted hover:text-accent transition-colors duration-300"
-                      >
-                        <FaGithub className="w-3.5 h-3.5" />
-                        <span>Source</span>
-                      </a>
-                    )}
-                    {type && (
-                      <div className="flex items-center gap-1.5 text-text-muted ml-auto">
-                        <FaChartPie className="w-3.5 h-3.5" />
-                        <span className="text-xs">{type}</span>
+                    {(featured || isOpenSource) && (
+                      <div className="absolute top-3 left-3 flex gap-2">
+                        {featured && (
+                          <span className="flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-accent/90 text-background font-semibold">
+                            <FaStar className="w-2.5 h-2.5" /> Featured
+                          </span>
+                        )}
+                        {isOpenSource && (
+                          <span className="flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-emerald-500/90 text-white font-semibold">
+                            <FaCode className="w-2.5 h-2.5" /> Open Source
+                          </span>
+                        )}
                       </div>
                     )}
                   </div>
 
-                  {/* Bottom accent line */}
-                  <div className="pt-3 border-t border-white/5">
-                    <button
-                      onClick={handleOpenModal}
-                      className="w-full flex items-center justify-center gap-2 text-sm font-medium text-accent hover:text-gold-light transition-colors duration-300 py-2 rounded-lg hover:bg-accent/5"
-                      aria-label={`View details for ${title}`}
-                    >
-                      <span>View Details</span>
-                      <FaExternalLinkAlt className="w-3 h-3" />
-                    </button>
+                  <div className="p-4 sm:p-6 flex flex-col flex-1">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-4 mb-4">
+                      <div className="flex-1 min-w-0">
+                        {type && (
+                          <span className="text-xs font-mono text-accent/70 uppercase tracking-wider">{type}</span>
+                        )}
+                        <h3 className="text-lg sm:text-xl font-bold text-text-primary group-hover:text-accent transition-colors mt-1 break-words">
+                          {title}
+                        </h3>
+                        {company && <p className="text-sm text-text-muted mt-1">{company}</p>}
+                      </div>
+                      <span className="text-xs text-text-muted bg-secondary/50 px-3 py-1 rounded-full font-mono shrink-0 self-start">
+                        {date}
+                      </span>
+                    </div>
+
+                    {description && (
+                      <p className="text-sm text-text-muted mb-4 line-clamp-2 leading-relaxed">{description}</p>
+                    )}
+
+                    {technologies && technologies.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 mb-4">
+                        {technologies.slice(0, 4).map((tech) => (
+                          <span key={tech} className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
+                            {tech}
+                          </span>
+                        ))}
+                        {technologies.length > 4 && (
+                          <span className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-text-muted">
+                            +{technologies.length - 4}
+                          </span>
+                        )}
+                      </div>
+                    )}
+
+                    <div className="mt-auto space-y-2">
+                      <div className="flex items-center gap-4 text-sm">
+                        {link && (
+                          <a href={link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-accent font-medium">
+                            <FaRocket className="w-3.5 h-3.5" /> Live Demo
+                          </a>
+                        )}
+                        {github && (
+                          <a href={github} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-text-muted hover:text-accent">
+                            <FaGithub className="w-3.5 h-3.5" /> Source
+                          </a>
+                        )}
+                      </div>
+                      <div className="pt-3 border-t border-white/5">
+                        <button
+                          onClick={handleOpenModal}
+                          className="w-full flex items-center justify-center gap-2 text-sm font-medium text-accent py-2 rounded-lg hover:bg-accent/5 cursor-pointer"
+                          aria-label={`View details for ${title}`}
+                        >
+                          View Details <FaExternalLinkAlt className="w-3 h-3" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
                 </div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </Reveal>
 
         <ProjectModal
-          project={{
-            title,
-            date,
-            link,
-            github,
-            type,
-            description,
-            technologies,
-            image,
-            company,
-          }}
+          project={{ title, date, link, github, type, description, technologies, image, company, demoUrl }}
           isOpen={isModalOpen}
           onClose={handleCloseModal}
         />
       </>
-    );
+    )
   }
-);
+)
 
-Project.displayName = "Project";
+ProjectCard.displayName = "Project"
 
-export default Project;
+export default ProjectCard

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { FaDownload } from "react-icons/fa"
+import { siteConfig } from "@/config/siteConfig"
 
 const ResumeDownload = () => {
   return (
@@ -10,13 +11,13 @@ const ResumeDownload = () => {
       transition={{ delay: 2, duration: 0.5 }}
     >
       <motion.a
-        href="/Resume.pdf"
-        download="Kian_Janloo_Resume.pdf"
+        href={siteConfig.resumePath}
+        download={siteConfig.resumeFilename}
         className="bg-gradient-to-r from-accent to-accent-secondary text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2 group"
-        whileHover={{ scale: 1.1 }}
+        whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <FaDownload className="w-5 h-5 group-hover:animate-bounce" />
+        <FaDownload className="w-5 h-5" />
         <span className="hidden sm:block font-medium">Resume</span>
       </motion.a>
     </motion.div>

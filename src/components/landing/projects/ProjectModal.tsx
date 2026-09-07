@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import LazyImage from "@/components/common/LazyImage";
 import {
   FaTimes,
   FaExternalLinkAlt,
@@ -34,23 +35,23 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black/50 flex items-end sm:items-center justify-center z-[60] p-0 sm:p-4 safe-bottom"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
         >
           <motion.div
-            className="bg-background rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto glass border border-white/20"
+            className="bg-background rounded-t-2xl sm:rounded-2xl max-w-4xl w-full max-h-[92dvh] sm:max-h-[90vh] overflow-y-auto glass border border-white/20"
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-4 sm:p-8">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h2 className="text-xl sm:text-3xl font-bold text-text-primary mb-2 gradient-text">
+              <div className="flex justify-between items-start mb-6 gap-3">
+                <div className="min-w-0 flex-1 pr-2">
+                  <h2 className="text-xl sm:text-3xl font-bold text-text-primary mb-2 gradient-text break-words">
                     {project.title}
                   </h2>
                   {project.company && (
@@ -58,7 +59,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       {project.company}
                     </p>
                   )}
-                  <div className="flex items-center gap-4 text-text-muted">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-text-muted mt-2">
                     <div className="flex items-center gap-2">
                       <FaCalendarAlt className="w-4 h-4" />
                       <span>{project.date}</span>
@@ -73,7 +74,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                 </div>
                 <button
                   onClick={onClose}
-                  className="text-text-muted hover:text-accent transition-colors p-2"
+                  className="text-text-muted hover:text-accent transition-colors p-2 min-w-11 min-h-11 flex items-center justify-center shrink-0"
                 >
                   <FaTimes className="w-6 h-6" />
                 </button>
@@ -98,7 +99,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                       <iframe
                         src={project.demoUrl}
                         title={`${project.title} demo`}
-                        className="w-full h-[400px] bg-white"
+                        className="w-full h-[220px] sm:h-[350px] md:h-[400px] bg-white"
                         sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
                         loading="lazy"
                       />
@@ -117,11 +118,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
               {project.image && (
                 <div className="mb-6">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-64 object-cover rounded-xl"
-                  />
+                  <LazyImage src={project.image} alt={project.title} className="w-full h-64 rounded-xl" />
                 </div>
               )}
 

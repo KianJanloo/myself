@@ -49,7 +49,7 @@ const TypingAnimation = ({
   }, [charIndex, isDeleting, stringIndex, strings, speed, deleteSpeed, pauseDuration])
 
   return (
-    <span className={className}>
+    <span className={`inline-block min-h-[1.2em] ${className}`}>
       {displayText}
       <span className="typing-cursor" />
     </span>

@@ -1,18 +1,8 @@
-import { useEffect, useCallback, useState } from "react"
+import { useEffect, useCallback } from "react"
 import { useTheme } from "@/context/ThemeContext"
+import { siteConfig } from "@/config/siteConfig"
 
-const SECTIONS = ["summary", "experiences", "projects", "contact"] as const
-
-export function useToast() {
-  const [toast, setToast] = useState<string | null>(null)
-
-  const showToast = useCallback((message: string) => {
-    setToast(message)
-    setTimeout(() => setToast(null), 2000)
-  }, [])
-
-  return { toast, showToast }
-}
+const SECTIONS = siteConfig.navItems.map((item) => item.id)
 
 export default function useKeyboardShortcuts() {
   const { toggleTheme } = useTheme()
@@ -25,17 +15,19 @@ export default function useKeyboardShortcuts() {
         target.tagName === "TEXTAREA" ||
         target.isContentEditable
 
-      // Ctrl+K / Cmd+K — command palette (handled by CommandPalette component)
       if ((e.ctrlKey || e.metaKey) && e.key === "k") {
         e.preventDefault()
         window.dispatchEvent(new CustomEvent("toggle-command-palette"))
         return
       }
 
-      // Don't trigger shortcuts when typing in inputs
       if (isInput) return
 
       switch (e.key) {
+        case "?":
+          e.preventDefault()
+          window.dispatchEvent(new CustomEvent("toggle-keyboard-help"))
+          break
         case "j": {
           e.preventDefault()
           const currentScroll = window.scrollY
@@ -60,33 +52,32 @@ export default function useKeyboardShortcuts() {
           }
           break
         }
-        case "t": {
+        case "t":
           e.preventDefault()
           toggleTheme()
           break
-        }
-        case "d": {
+        case "d":
           e.preventDefault()
-          const link = document.createElement("a")
-          link.href = "/Resume.pdf"
-          link.download = "Kian_Janloo_Resume.pdf"
-          link.click()
+          {
+            const link = document.createElement("a")
+            link.href = siteConfig.resumePath
+            link.download = siteConfig.resumeFilename
+            link.click()
+          }
           break
-        }
-        case "/": {
+        case "/":
           e.preventDefault()
           window.dispatchEvent(new CustomEvent("toggle-command-palette"))
           break
-        }
         case "1":
         case "2":
         case "3":
-        case "4": {
+        case "4":
+        case "5": {
           e.preventDefault()
           const idx = parseInt(e.key) - 1
           if (SECTIONS[idx]) {
-            const el = document.getElementById(SECTIONS[idx])
-            el?.scrollIntoView({ behavior: "smooth", block: "start" })
+            document.getElementById(SECTIONS[idx])?.scrollIntoView({ behavior: "smooth", block: "start" })
           }
           break
         }

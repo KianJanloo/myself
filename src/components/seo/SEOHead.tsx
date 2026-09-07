@@ -1,4 +1,5 @@
-import { Helmet } from 'react-helmet-async'
+import { Helmet } from "react-helmet-async"
+import { siteConfig } from "@/config/siteConfig"
 
 interface SEOHeadProps {
   title?: string
@@ -10,19 +11,19 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({
-  title = "Kian Janloo - Full Stack Developer",
-  description = "Full Stack Developer specializing in React, Next.js, TypeScript, and modern web technologies. Building scalable and performant web applications.",
+  title = siteConfig.title,
+  description = siteConfig.description,
   keywords = "Full Stack Developer, React, Next.js, TypeScript, JavaScript, Web Development, Frontend, Backend, Portfolio",
   image = "/og-image.png",
-  url = import.meta.env.VITE_SITE_URL || "https://myself-wheat.vercel.app",
-  type = "website"
+  url = siteConfig.url,
+  type = "website",
 }: SEOHeadProps) => {
   return (
     <Helmet>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Kian Janloo" />
+      <meta name="author" content={siteConfig.name} />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={url} />
 
@@ -31,7 +32,7 @@ const SEOHead = ({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={`${url}${image}`} />
-      <meta property="og:site_name" content="Kian Janloo Portfolio" />
+      <meta property="og:site_name" content={`${siteConfig.name} Portfolio`} />
 
       <meta property="twitter:card" content="summary_large_image" />
       <meta property="twitter:url" content={url} />
@@ -41,36 +42,18 @@ const SEOHead = ({
 
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta name="theme-color" content="#d4a853" />
-      <meta name="msapplication-TileColor" content="#d4a853" />
 
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Person",
-          "name": "Kian Janloo",
-          "jobTitle": "Full Stack Developer",
-          "description": description,
-          "url": url,
-          "image": `${url}${image}`,
-          "sameAs": [
-            "https://www.linkedin.com/in/kian-junloo/",
-            "https://github.com/KianJanloo"
-          ],
-          "knowsAbout": [
-            "React",
-            "Next.js",
-            "TypeScript",
-            "JavaScript",
-            "Node.js",
-            "MongoDB",
-            "PostgreSQL",
-            "Tailwind CSS"
-          ],
-          "alumniOf": "Software Engineering",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "Freelance"
-          }
+          name: siteConfig.name,
+          jobTitle: "Full Stack Developer",
+          description,
+          url,
+          image: `${url}${image}`,
+          sameAs: [siteConfig.social.linkedin, siteConfig.social.github],
+          knowsAbout: ["React", "Next.js", "TypeScript", "Node.js", "PostgreSQL", "MongoDB"],
         })}
       </script>
     </Helmet>

@@ -22,7 +22,7 @@ const ResumeBox = () => {
           <div className="relative glass rounded-3xl border border-white/10 group-hover:border-accent/30 transition-all duration-500 overflow-hidden">
             {/* Header */}
             <div className="gap-4 p-4 sm:p-8 pb-0">
-              <div className="flex items-center justify-between gap-3">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-3 sm:gap-4">
                   <div className="p-2.5 sm:p-3 bg-gradient-to-br from-accent/20 to-accent-secondary/20 rounded-2xl group-hover:from-accent/30 group-hover:to-accent-secondary/30 transition-all duration-300">
                     <FaFileAlt className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
@@ -42,7 +42,7 @@ const ResumeBox = () => {
                   whileTap={{ scale: 0.95 }}
                   href={resume}
                   download
-                  className="flex items-center gap-2 px-4 sm:px-6 py-2.5 sm:py-3 bg-gradient-to-r from-accent to-accent-secondary text-white rounded-xl font-semibold shadow-lg hover:shadow-accent/30 transition-all duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-2 w-full sm:w-auto px-4 sm:px-6 py-3 bg-gradient-to-r from-accent to-accent-secondary text-white rounded-xl font-semibold shadow-lg hover:shadow-accent/30 transition-all duration-300 cursor-pointer min-h-11"
                 >
                   <FaDownload className="w-4 h-4" />
                   <span className="text-sm sm:text-base">Download PDF</span>
@@ -88,15 +88,15 @@ const ResumeBox = () => {
             {/* Stats row */}
             <div className="px-4 sm:px-8 pb-6 sm:pb-8">
               <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-6 border-t border-white/10">
-                <div className="text-center">
+                <div className="text-center px-1 sm:px-2">
                   <div className="text-lg sm:text-2xl font-bold gradient-text">4+</div>
                   <div className="text-xs sm:text-sm text-text-muted">Years Experience</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center px-1 sm:px-2">
                   <div className="text-lg sm:text-2xl font-bold gradient-text">50+</div>
-                  <div className="text-xs sm:text-sm text-text-muted">Projects Completed</div>
+                  <div className="text-xs sm:text-sm text-text-muted">Projects</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center px-1 sm:px-2">
                   <div className="text-lg sm:text-2xl font-bold gradient-text">10+</div>
                   <div className="text-xs sm:text-sm text-text-muted">Technologies</div>
                 </div>

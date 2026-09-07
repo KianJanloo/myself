@@ -1,20 +1,20 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef, useEffect } from "react"
 
-interface LazyImageProps {
+interface LazyImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   src: string
   alt: string
   className?: string
-  placeholder?: string
-  [key: string]: any
 }
 
-const LazyImage = ({ src, alt, className = '', placeholder, ...props }: LazyImageProps) => {
+const LazyImage = ({ src, alt, className = "", ...props }: LazyImageProps) => {
   const [isLoaded, setIsLoaded] = useState(false)
   const [isInView, setIsInView] = useState(false)
-  const imgRef = useRef<HTMLImageElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry?.isIntersecting) {
@@ -22,39 +22,29 @@ const LazyImage = ({ src, alt, className = '', placeholder, ...props }: LazyImag
           observer.disconnect()
         }
       },
-      { threshold: 0.1 }
+      { rootMargin: "100px", threshold: 0.01 }
     )
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current)
-    }
-
+    observer.observe(el)
     return () => observer.disconnect()
   }, [])
 
-  const handleLoad = () => {
-    setIsLoaded(true)
-  }
-
   return (
-    <div ref={imgRef} className={`relative overflow-hidden ${className}`} {...props}>
+    <div ref={containerRef} className={`relative overflow-hidden ${className}`}>
       {!isLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 animate-pulse flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-gray-500 border-t-transparent rounded-full animate-spin" />
-        </div>
+        <div className="absolute inset-0 bg-secondary/50 animate-pulse" aria-hidden="true" />
       )}
-
       {isInView && (
-        <motion.img
+        <img
           src={src}
           alt={alt}
-          onLoad={handleLoad}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
           className={`w-full h-full object-cover transition-opacity duration-300 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
+            isLoaded ? "opacity-100" : "opacity-0"
           }`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          {...props}
         />
       )}
     </div>

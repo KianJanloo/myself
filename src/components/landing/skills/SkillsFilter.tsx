@@ -1,57 +1,38 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { FaLanguage, FaLaptopCode, FaPaintBrush, FaDatabase, FaShieldAlt, FaCloud, FaTools } from 'react-icons/fa'
+import { CATEGORY_META } from "@/utils/service/skills/skillMeta"
+import { FaThLarge } from "react-icons/fa"
 
 interface SkillsFilterProps {
   onFilterChange: (filter: string) => void
+  activeFilter: string
 }
 
-const SkillsFilter = ({ onFilterChange }: SkillsFilterProps) => {
-  const [activeFilter, setActiveFilter] = useState('all')
+const SkillsFilter = ({ onFilterChange, activeFilter }: SkillsFilterProps) => {
   const categories = [
-    { key: 'all', label: 'All' },
-    { key: 'languages', label: 'Languages', icon: <FaLanguage /> },
-    { key: 'frontend', label: 'Frontend', icon: <FaPaintBrush /> },
-    { key: 'backend', label: 'Backend', icon: <FaLaptopCode /> },
-    { key: 'databases', label: 'Databases', icon: <FaDatabase /> },
-    { key: 'auth', label: 'Auth', icon: <FaShieldAlt /> },
-    { key: 'devops', label: 'DevOps', icon: <FaCloud /> },
-    { key: 'tools', label: 'Tools', icon: <FaTools /> },
+    { key: "all", label: "All", icon: FaThLarge },
+    ...Object.entries(CATEGORY_META).map(([key, meta]) => ({
+      key,
+      label: meta.label.split(" ")[0],
+      icon: meta.icon,
+    })),
   ]
 
-  const handleFilter = (filter: string) => {
-    setActiveFilter(filter)
-    onFilterChange(filter)
-  }
-
   return (
-    <motion.div
-      className="flex flex-wrap gap-2 sm:gap-3 mb-8 sm:mb-12 justify-center"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-    >
-      {categories.map((category, index) => (
-        <motion.button
-          key={category.key}
-          onClick={() => handleFilter(category.key)}
-          className={`px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl sm:rounded-2xl text-xs sm:text-sm font-semibold transition-all duration-300 flex items-center gap-1.5 sm:gap-2 ${
-            activeFilter === category.key
-              ? 'bg-gradient-to-r from-accent to-accent-secondary text-white shadow-xl shadow-accent/25'
-              : 'bg-white/10 text-text-muted hover:bg-white/20 hover:text-text-primary hover:shadow-lg'
+    <div className="flex flex-wrap gap-2 sm:gap-2.5 justify-center mb-8 sm:mb-10">
+      {categories.map(({ key, label, icon: Icon }) => (
+        <button
+          key={key}
+          onClick={() => onFilterChange(key)}
+            className={`px-3 py-2.5 sm:px-4 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 flex items-center gap-1.5 cursor-pointer min-h-11 ${
+            activeFilter === key
+              ? "bg-gradient-to-r from-accent to-accent-secondary text-background shadow-md shadow-accent/20"
+              : "bg-white/5 text-text-muted hover:bg-white/10 hover:text-text-primary border border-white/10"
           }`}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1 }}
         >
-          <span className="text-sm sm:text-lg">{category.icon}</span>
-          <span>{category.label}</span>
-        </motion.button>
+          <Icon className="w-3.5 h-3.5" />
+          {label}
+        </button>
       ))}
-    </motion.div>
+    </div>
   )
 }
 

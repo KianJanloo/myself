@@ -67,6 +67,17 @@ html.light {
     scroll-behavior: smooth;
 }
 
+html {
+    scroll-padding-top: 5rem;
+    overflow-x: clip;
+}
+
+@-moz-document url-prefix() {
+    * {
+        scroll-behavior: auto;
+    }
+}
+
 /* Smooth theme transition */
 html.transitioning *,
 html.transitioning *::before,
@@ -75,6 +86,7 @@ html.transitioning *::after {
 }
 
 body {
+    overflow-x: clip;
     background: linear-gradient(135deg, #0a0a0f 0%, #111118 50%, #1a1a24 100%);
     color: var(--foreground);
     font-family: var(--font-body);
@@ -111,6 +123,50 @@ html.light body {
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Fixed nav: use solid background in Firefox where backdrop-filter kills scroll perf */
+.nav-glass {
+    background: rgba(10, 10, 15, 0.92);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html.light .nav-glass {
+    background: rgba(248, 248, 250, 0.92);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+@supports (backdrop-filter: blur(10px)) {
+    .nav-glass:not(.firefox-lite) {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(12px);
+    }
+
+    html.light .nav-glass:not(.firefox-lite) {
+        background: rgba(0, 0, 0, 0.03);
+    }
+}
+
+/* Skip backdrop-filter in Firefox — major scroll performance win */
+@-moz-document url-prefix() {
+    .nav-glass,
+    .glass {
+        backdrop-filter: none !important;
+    }
+
+    .nav-glass {
+        background: rgba(10, 10, 15, 0.95);
+    }
+
+    html.light .nav-glass {
+        background: rgba(248, 248, 250, 0.95);
+    }
+}
+
+/* Defer off-screen section layout/paint during scroll */
+.section-block {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
 }
 
 html.light .glass {
@@ -299,8 +355,19 @@ html.light .grid-pattern {
 }
 
 @media (max-width: 768px) {
-    .timeline-line {
-        left: 20px;
+    html {
+        scroll-padding-top: 4.5rem;
+    }
+}
+
+/* Safe area for notched devices */
+@supports (padding: env(safe-area-inset-top)) {
+    .safe-top {
+        padding-top: env(safe-area-inset-top);
+    }
+
+    .safe-bottom {
+        padding-bottom: max(1rem, env(safe-area-inset-bottom));
     }
 }
 
@@ -334,4 +401,107 @@ html.light .grid-pattern {
     .floating-element {
         animation: none !important;
     }
+}
+
+/* ── Aurora background (GPU-composited CSS, no JS loop) ── */
+.aurora-bg {
+    contain: strict;
+}
+
+.aurora-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.45;
+    will-change: transform;
+    animation: aurora-drift 18s ease-in-out infinite;
+}
+
+.aurora-blob-1 {
+    width: 55vw;
+    height: 55vw;
+    max-width: 600px;
+    max-height: 600px;
+    top: -15%;
+    left: -10%;
+    background: radial-gradient(circle, rgba(212, 168, 83, 0.35) 0%, transparent 70%);
+    animation-duration: 22s;
+}
+
+.aurora-blob-2 {
+    width: 45vw;
+    height: 45vw;
+    max-width: 500px;
+    max-height: 500px;
+    top: 30%;
+    right: -15%;
+    background: radial-gradient(circle, rgba(201, 148, 74, 0.28) 0%, transparent 70%);
+    animation-duration: 26s;
+    animation-delay: -8s;
+}
+
+.aurora-blob-3 {
+    width: 40vw;
+    height: 40vw;
+    max-width: 450px;
+    max-height: 450px;
+    bottom: -10%;
+    left: 25%;
+    background: radial-gradient(circle, rgba(232, 197, 109, 0.22) 0%, transparent 70%);
+    animation-duration: 20s;
+    animation-delay: -4s;
+}
+
+.aurora-noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@keyframes aurora-drift {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(3%, 2%) scale(1.05); }
+    66% { transform: translate(-2%, 3%) scale(0.97); }
+}
+
+/* Performance-friendly glass — no backdrop-filter */
+.glass-perf {
+    background: rgba(17, 17, 24, 0.75);
+    border: 1px solid rgba(212, 168, 83, 0.15);
+}
+
+html.light .glass-perf {
+    background: rgba(255, 255, 255, 0.82);
+    border: 1px solid rgba(184, 145, 46, 0.15);
+}
+
+.heading-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 4s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+.hero-photo-glow::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+    opacity: 0.5;
+    filter: blur(12px);
+    z-index: -1;
+    animation: aurora-drift 8s ease-in-out infinite;
+}
+
+.project-card-glow {
+    transition: box-shadow 0.3s ease;
+}
+
+.project-card-glow:hover {
+    box-shadow: 0 0 30px rgba(212, 168, 83, 0.12);
 }

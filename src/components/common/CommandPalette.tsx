@@ -1,7 +1,21 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/context/ThemeContext"
-import { FaSearch, FaArrowUp, FaFileDownload, FaPalette, FaUser, FaBriefcase, FaFolderOpen, FaEnvelope, FaCode } from "react-icons/fa"
+import { siteConfig } from "@/config/siteConfig"
+import { projects } from "@/utils/service/projects/projects"
+import { skills } from "@/utils/service/skills/skills"
+import {
+  FaSearch,
+  FaArrowUp,
+  FaFileDownload,
+  FaPalette,
+  FaUser,
+  FaBriefcase,
+  FaFolderOpen,
+  FaEnvelope,
+  FaCode,
+  FaRoute,
+} from "react-icons/fa"
 
 interface CommandItem {
   id: string
@@ -19,29 +33,62 @@ const CommandPalette = () => {
   const listRef = useRef<HTMLDivElement>(null)
   const { toggleTheme, theme } = useTheme()
 
-  const commands: CommandItem[] = useMemo(
-    () => [
-      // Sections
-      { id: "about", label: "About", icon: <FaUser />, category: "Sections", action: () => document.getElementById("summary")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "experience", label: "Experience", icon: <FaBriefcase />, category: "Sections", action: () => document.getElementById("experiences")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "projects", label: "Projects", icon: <FaFolderOpen />, category: "Sections", action: () => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "contact", label: "Contact", icon: <FaEnvelope />, category: "Sections", action: () => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }) },
-      { id: "skills", label: "Skills", icon: <FaCode />, category: "Sections", action: () => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" }) },
-      // Actions
+  const commands: CommandItem[] = useMemo(() => {
+    const sectionCommands: CommandItem[] = siteConfig.navItems.map((item) => ({
+      id: `section-${item.id}`,
+      label: item.name,
+      icon: item.id === "summary" ? <FaUser /> : item.id === "experiences" ? <FaBriefcase /> : item.id === "projects" ? <FaFolderOpen /> : item.id === "contact" ? <FaEnvelope /> : <FaCode />,
+      category: "Sections",
+      action: () => document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" }),
+    }))
+
+    const projectCommands: CommandItem[] = projects.map((p) => ({
+      id: `project-${p.title}`,
+      label: p.title,
+      icon: <FaFolderOpen />,
+      category: "Projects",
+      action: () => {
+        document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })
+        setTimeout(() => {
+          document.querySelector(`[aria-label="View details for ${p.title}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" })
+        }, 400)
+      },
+    }))
+
+    const skillCommands: CommandItem[] = skills.slice(0, 20).map((s) => ({
+      id: `skill-${s.name}`,
+      label: s.name,
+      icon: <FaCode />,
+      category: "Skills",
+      action: () => document.getElementById("skills")?.scrollIntoView({ behavior: "smooth" }),
+    }))
+
+    const actionCommands: CommandItem[] = [
       { id: "top", label: "Back to Top", icon: <FaArrowUp />, category: "Actions", action: () => window.scrollTo({ top: 0, behavior: "smooth" }) },
-      { id: "resume", label: "Download PDF", icon: <FaFileDownload />, category: "Actions", action: () => { const a = document.createElement("a"); a.href = "/Resume.pdf"; a.download = "Kian_Janloo_Resume.pdf"; a.click() } },
-      { id: "theme", label: `Actions: ${theme === "dark" ? "Light" : "Dark"} Mode`, icon: <FaPalette />, category: "Actions", action: toggleTheme },
-    ],
-    [theme, toggleTheme]
-  )
+      {
+        id: "resume",
+        label: "Download Resume",
+        icon: <FaFileDownload />,
+        category: "Actions",
+        action: () => {
+          const a = document.createElement("a")
+          a.href = siteConfig.resumePath
+          a.download = siteConfig.resumeFilename
+          a.click()
+        },
+      },
+      { id: "theme", label: `Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`, icon: <FaPalette />, category: "Actions", action: toggleTheme },
+      { id: "roadmap", label: "Toggle 3D Roadmap View", icon: <FaRoute />, category: "Actions", action: () => window.dispatchEvent(new CustomEvent("toggle-3d-mode")) },
+    ]
+
+    return [...sectionCommands, ...projectCommands, ...skillCommands, ...actionCommands]
+  }, [theme, toggleTheme])
 
   const filtered = useMemo(() => {
     if (!query) return commands
     const q = query.toLowerCase()
     return commands.filter(
-      (cmd) =>
-        cmd.label.toLowerCase().includes(q) ||
-        cmd.category.toLowerCase().includes(q)
+      (cmd) => cmd.label.toLowerCase().includes(q) || cmd.category.toLowerCase().includes(q)
     )
   }, [commands, query])
 
@@ -61,23 +108,17 @@ const CommandPalette = () => {
     }
   }, [isOpen])
 
-  useEffect(() => {
-    setSelectedIndex(0)
-  }, [query])
+  useEffect(() => setSelectedIndex(0), [query])
 
   useEffect(() => {
-    if (!listRef.current) return
-    const item = listRef.current.children[selectedIndex] as HTMLElement
+    const item = listRef.current?.children[selectedIndex] as HTMLElement
     item?.scrollIntoView({ block: "nearest" })
   }, [selectedIndex])
 
-  const execute = useCallback(
-    (cmd: CommandItem) => {
-      cmd.action()
-      setIsOpen(false)
-    },
-    []
-  )
+  const execute = useCallback((cmd: CommandItem) => {
+    cmd.action()
+    setIsOpen(false)
+  }, [])
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
@@ -111,7 +152,7 @@ const CommandPalette = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] bg-black/60"
             onClick={() => setIsOpen(false)}
           />
           <motion.div
@@ -140,9 +181,7 @@ const CommandPalette = () => {
 
               <div ref={listRef} className="max-h-64 overflow-y-auto py-2">
                 {filtered.length === 0 ? (
-                  <div className="px-4 py-8 text-center text-text-muted text-sm">
-                    No results found
-                  </div>
+                  <div className="px-4 py-8 text-center text-text-muted text-sm">No results found</div>
                 ) : (
                   filtered.map((cmd, idx) => (
                     <button
@@ -150,24 +189,18 @@ const CommandPalette = () => {
                       onClick={() => execute(cmd)}
                       onMouseEnter={() => setSelectedIndex(idx)}
                       className={`w-full flex items-center gap-3 px-4 py-2.5 text-left text-sm transition-colors cursor-pointer ${
-                        idx === selectedIndex
-                          ? "bg-accent/10 text-accent"
-                          : "text-text-primary hover:bg-white/5"
+                        idx === selectedIndex ? "bg-accent/10 text-accent" : "text-text-primary hover:bg-white/5"
                       }`}
                     >
-                      <span className="w-5 h-5 flex items-center justify-center text-xs opacity-70">
-                        {cmd.icon}
-                      </span>
+                      <span className="w-5 h-5 flex items-center justify-center text-xs opacity-70">{cmd.icon}</span>
                       <span className="flex-1">{cmd.label}</span>
-                      <span className="text-[10px] text-text-muted uppercase tracking-wider">
-                        {cmd.category}
-                      </span>
+                      <span className="text-[10px] text-text-muted uppercase tracking-wider">{cmd.category}</span>
                     </button>
                   ))
                 )}
               </div>
 
-              <div className="px-4 py-2 border-t border-white/10 flex items-center gap-4 text-[10px] text-text-muted">
+              <div className="px-4 py-2 border-t border-white/10 flex flex-wrap items-center gap-x-4 gap-y-1 text-[10px] text-text-muted">
                 <span><kbd className="px-1 py-0.5 bg-white/5 rounded">↑↓</kbd> navigate</span>
                 <span><kbd className="px-1 py-0.5 bg-white/5 rounded">↵</kbd> select</span>
                 <span><kbd className="px-1 py-0.5 bg-white/5 rounded">esc</kbd> close</span>

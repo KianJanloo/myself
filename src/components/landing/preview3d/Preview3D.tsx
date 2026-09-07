@@ -29,9 +29,9 @@ const Preview3D = () => {
 
     const projItems: TimelineItem[] = projects.map((proj) => ({
       title: proj.title,
-      subtitle: proj.type,
+      subtitle: proj.type ?? "Project",
       date: proj.date,
-      tags: [proj.company, proj.type],
+      tags: [proj.company, proj.type].filter((t): t is string => Boolean(t)),
       description: proj.link ? [`Live: ${proj.link}`] : undefined,
       type: "project" as const,
       sortDate: proj.date,
